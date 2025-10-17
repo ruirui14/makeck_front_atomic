@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import React from 'react';
 import images from '../hooks/images';
 import Dialog from "@mui/material/Dialog";
@@ -6,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import Button from "@mui/material/Button";
+import PropTypes from "prop-types";
 
 
 export default function CustomDialog({
@@ -75,3 +75,11 @@ export default function CustomDialog({
 
   );
 }    
+
+  CustomDialog.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    content: PropTypes.func.isRequired,
+    test_content: PropTypes.func.isRequired,
+    cancelButtonLabel: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+  };  

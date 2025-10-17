@@ -1,6 +1,5 @@
-import React from 'react';
-import { useNavigate } from "react-router-dom";
 import CustomDialog from "./CustomDialog";
+import PropTypes from "prop-types";
 
 export default function TestDialog({ isOpen,test_content, onConfirm, onCancel }) {
     const content = "～ 選択中レシピ ～";
@@ -21,3 +20,10 @@ export default function TestDialog({ isOpen,test_content, onConfirm, onCancel })
       />
     );
 }
+
+  TestDialog.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onConfirm: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+    test_content: PropTypes.func.isRequired,
+  };
