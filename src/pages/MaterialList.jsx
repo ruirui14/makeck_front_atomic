@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React from 'react';
+import _React from 'react';
 import images from '../hooks/images';
 import { useState } from "react";
 import useMenuData from "../hooks/useMenuData";
@@ -144,79 +144,84 @@ export default function MaterialList() {
     // ]
 
     //材料JSON取得
-    var { data, loading, error } = useMenuData(`https://makeck.mattuu.com/api/materials`)
+    var { data, _loading, _error } = useMenuData(`https://makeck.mattuu.com/api/materials`)
     var material = data ? data : [];
     console.log(material);
 
     return (
-        <div className="App">
+      <div className="App">
+        {/*ヘッダー*/}
+        <header>
+          <div
+            className="backBtn"
+            onClick={() => navigate("/menuConfirmation")}
+          >
+            ＜
+          </div>
+          <div id="pageTitle">材料一覧</div>
+        </header>
 
-            {/*ヘッダー*/}
-            <header>
-                <div className='backBtn' onClick={() => navigate('/menuConfirmation')}>＜</div>
-                <div id='pageTitle'>材料一覧</div>
-            </header>
+        <main>
+          <div id="cookingTime">調理時間目安 : 分</div>
 
-            <main>
-                <div id='cookingTime'>
-                    調理時間目安 :  分
-                </div>
+          <div className="wrapper">
+            <div className="accordion">
+              {material.map((item, i) => (
+                <div className="item" key={i}>
+                  {" "}
+                  {/*パフォーマンス向上のためらしい*/}
+                  {/* {console.log("インデックス番号:", i, "要素:", item)} */}
+                  <div className="title" onClick={() => toggle(i)}>
+                    {/*料理名*/}
+                    <div className="materialname">{item.name}</div>
 
-                <div className="wrapper">
-                    <div className="accordion">
-                        {material.map((item, i) =>
-                            <div className="item" key={i}>  {/*パフォーマンス向上のためらしい*/}
-                                {/* {console.log("インデックス番号:", i, "要素:", item)} */}
-                                <div className='title' onClick={() => toggle(i)}>
-
-                                    {/*料理名*/}
-                                    <div className="materialname">
-                                        {item.name}
-                                    </div>
-
-                                    {/* 表示、非表示を切り替えるボタン */}
-                                    <span>{selected === i ? <img src={images.closeButton} /> : <img src={images.openButton} />}</span>
-                                </div>
-                                <div
-                                    className={
-                                        selected === i ? "content show" : "content"
-                                    }
-                                >
-                                    {/* {item.number.map((num,index) => (
+                    {/* 表示、非表示を切り替えるボタン */}
+                    <span>
+                      {selected === i ? (
+                        <img src={images.closeButton} />
+                      ) : (
+                        <img src={images.openButton} />
+                      )}
+                    </span>
+                  </div>
+                  <div className={selected === i ? "content show" : "content"}>
+                    {/* {item.number.map((num,index) => (
                                 <p key={index}>{num}</p>
                             ))} */}
-                                    {item.materials.map((line, index) => (
-                                        <div className="material">
-                                            <div className="materialNameP" key={index}> {line.name} </div>
-                                            <div className = "quantityM">{line.quantity || ""} 
-                                                {line.unit || ""}
-                                            </div>
-                                                {/*{line}: 現在のインデックス番号を取得*/}
-                                                {/* {console.log(line.name)} */}
-                                                {/* {line} {item.number?.[index] || ""} {item.unit?.[index] || ""} */}
-                                            {/* 各行を段落として表示 */}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                    </div>
-
+                    {item.materials.map((line, index) => (
+                      <div className="material" key={index}>
+                        <div className="materialNameP">
+                          {" "}
+                          {line.name}{" "}
+                        </div>
+                        <div className="quantityM">
+                          {line.quantity || ""}
+                          {line.unit || ""}
+                        </div>
+                        {/*{line}: 現在のインデックス番号を取得*/}
+                        {/* {console.log(line.name)} */}
+                        {/* {line} {item.number?.[index] || ""} {item.unit?.[index] || ""} */}
+                        {/* 各行を段落として表示 */}
+                      </div>
+                    ))}
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </main>
 
-
-
-
-            </main>
-
-            {/*フッター*/}
-            <footer id='decisionFooter'>
-                <button type='button' id='decisionBtn' onClick={() => navigate('/cookProcess')}>調理開始！</button>
-            </footer>
-
-        </div>
-
+        {/*フッター*/}
+        <footer id="decisionFooter">
+          <button
+            type="button"
+            id="decisionBtn"
+            onClick={() => navigate("/cookProcess")}
+          >
+            調理開始！
+          </button>
+        </footer>
+      </div>
     );
 
 }
