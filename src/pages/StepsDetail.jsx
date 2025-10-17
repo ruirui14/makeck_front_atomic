@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import images from '../hooks/images';
+import _images from '../hooks/images';
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
 import useVoice from '../hooks/useVoice';               // 音声認識
 import { useEffect } from 'react';
 
 // ハリボテデータ
-var haribote = [{
+var _haribote = [{
     "recipeName": "フランクフルトのソテー",
     "displayName": "調理2",
     "materials": [
@@ -49,15 +49,15 @@ function StepsDetail() {
     const title = "手順詳細";
 
     // 手順番号
-    const stepNumber = 2;
+    const _stepNumber = 2;
     // 手順名
-    const menuName = "フランクフルトのソテー";
+    const _menuName = "フランクフルトのソテー";
 
     // 詳細データ取得
-    const { data, loading, error } = useMenuData("https://makeck.mattuu.com/api/info");
-    const detail = data;
+    const { data, _loading, _error } = useMenuData("https://makeck.mattuu.com/api/info");
+    const _detail = data;
 
-    const { transcript, listening, resetTranscript, startListening, stopListening } = useVoice();
+    const { transcript, listening, resetTranscript, startListening, _stopListening } = useVoice();
 
     useEffect(() => {
         // 音声認識が開始されるときに確認
