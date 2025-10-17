@@ -6,18 +6,19 @@ import images from '../hooks/images';                   // 画像取得
 
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
 import useCreateChart from '../hooks/useCreateChart';   // チャート用データ整形
-import useVoice from '../hooks/useVoice';               // 音声認識
-import { useEffect, useState } from 'react';
+import _useVoice from '../hooks/useVoice';               // 音声認識
+import { useEffect, useRef, useState } from 'react';
 
 function CookProcess() {
     const navigate = useNavigate();                     // 遷移用インスタンス
+    const dialogRef = useRef(null);                     // ダイアログ描画
 
     // メニューデータ取得 (4品分献立、カテゴリー*3)
     // const { data, loading, error } = useMenuData("https://makeck.mattuu.com/api/chart");
     const { data, loading, error } = useMenuData("https://makeck.mattuu.com/api/chart2");
-    const { data: syusyoku, loading: syusyokuLoading, error: syusyokuError } = useMenuData("https://makeck.mattuu.com/api/syusyoku");
-    const { data: syusai, loading: syusaiLoading, error: syusaiError } = useMenuData("https://makeck.mattuu.com/api/syusai");
-    const { data: sirumono, loading: sirumonoLoading, error: sirumonoError } = useMenuData("https://makeck.mattuu.com/api/sirumono");
+    const { data: _syusyoku, loading: syusyokuLoading, error: syusyokuError } = useMenuData("https://makeck.mattuu.com/api/syusyoku");
+    const { data: _syusai, loading: syusaiLoading, error: syusaiError } = useMenuData("https://makeck.mattuu.com/api/syusai");
+    const { data: _sirumono, loading: sirumonoLoading, error: sirumonoError } = useMenuData("https://makeck.mattuu.com/api/sirumono");
     const menus = data ? data : "";
     console.log(`menus : \n`, menus);
 
@@ -26,17 +27,17 @@ function CookProcess() {
     
 
     // 音声認識フック呼び出し
-    const { transcript, listening, resetTranscript, startListening, stopListening } = useVoice();
-    useEffect(() => {
-        // 音声認識が開始されるときに確認
-        console.log("音声認識状態:", listening);
+    // const { transcript, listening, resetTranscript, startListening, stopListening } = useVoice();
+    // useEffect(() => {
+    //     // 音声認識が開始されるときに確認
+    //     console.log("音声認識状態:", listening);
 
-        // 音声認識が開始されていない場合に開始
-        stopListening();
-        resetTranscript();
-        startListening();
+    //     // 音声認識が開始されていない場合に開始
+    //     stopListening();
+    //     resetTranscript();
+    //     startListening();
         
-    }, []);
+    // }, []);
 
     
 
@@ -88,21 +89,21 @@ function CookProcess() {
     }, [chartData]);
 
     // 音声認識結果の更新
-    useEffect(() => {
-        var speakText = transcript.trim().replace(/\s+/g, "").replace(/[、。]/g, "").toLowerCase().normalize("NFC").replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xFEE0));
-        if (speakText) {
-            console.log("音声認識結果: ", speakText);
+    // useEffect(() => {
+    //     var speakText = transcript.trim().replace(/\s+/g, "").replace(/[、。]/g, "").toLowerCase().normalize("NFC").replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xFEE0));
+    //     if (speakText) {
+    //         console.log("音声認識結果: ", speakText);
 
-            const target = routes.find(item => item.key === speakText);
+    //         const target = routes.find(item => item.key === speakText);
 
-            if (target && target.route) {
+    //         if (target && target.route) {
 
-                console.log(`遷移先: /stepsDetail/${target.route}`);
-                navigate(`/stepsDetail/${target.route}`);
-                resetTranscript();
-            }         
-        }
-    }, [transcript]);
+    //             console.log(`遷移先: /stepsDetail/${target.route}`);
+    //             navigate(`/stepsDetail/${target.route}`);
+    //             resetTranscript();
+    //         }         
+    //     }
+    // }, [transcript]);
 
     // 次のページ
     const nextPage = {
@@ -191,7 +192,8 @@ function CookProcess() {
                 
                 {/* ガントチャートコンテナ */}
                 
-                <div id='startBar' onClick={()=>resetTranscript()}>スタート！</div>
+                {/* <div id='startBar' onClick={()=>resetTranscript()}>スタート！</div> */}
+                <div id='startBar'>スタート！</div>
                 <div id='chartContainer' className='grid'>
                     {chartData?.menu?.map((element, index) => {
                         let usedTaskIds = new Set();
@@ -210,7 +212,7 @@ function CookProcess() {
                                 {element?.task?.map( t => {
                                     if (t != undefined) {
                                         // 手順カテゴリ名
-                                        var category = "";
+                                        var _category = "";
                                         // クラス指定用
                                         var c = "gridItem ";
 
@@ -262,7 +264,7 @@ function CookProcess() {
                         )
                     })}
                 </div>
-                <dialog id='cookFinDialog' onClick={() => {
+                <dialog id='cookFinDialog' ref={dialogRef} onClick={() => {
                     navigate(nextPage.path);
                     localStorage.clear();
                 }}>
@@ -278,7 +280,7 @@ function CookProcess() {
             </main>
 
         <footer id='decisionFooter'>
-            <button type='button' id='decisionBtn' onClick={() => cookFinDialog.showModal()}>{nextPage.title}</button>
+            <button type='button' id='decisionBtn' onClick={() => dialogRef.current.showModal()}>{nextPage.title}</button>
         </footer>
         </div>
     )

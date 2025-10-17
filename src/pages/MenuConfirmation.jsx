@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import "../loader.css";
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
-import Marquee from "react-fast-marquee";               // 文字スライド用
+import _Marquee from "react-fast-marquee";               // 文字スライド用
 
 // 豆知識(仮データ)
-const trivia = [
+const _trivia = [
     "オリーブオイルは高温で加熱すると香りが失われるので、低温で調理するのがおすすめです。",
     "魚を焼くときに皮目から焼くと、食感が良く仕上がります。",
     "にんにくをみじん切りにするときは、刻む前に塩を加えて潰すと扱いやすくなります。",
@@ -30,7 +30,7 @@ const trivia = [
 
 
 // 調理時間
-const cookingTime = 85;
+const _ = 85;
 
 // 献立リスト
 const category = [
@@ -49,9 +49,9 @@ function MenuConfirmation() {
     // 画面遷移用フック
     const navigate = useNavigate();
 
-    const { data: syusyoku, loading: syusyokuLoading, error: syusyokuError } = useMenuData("https://makeck.mattuu.com/api/syusyoku");
-    const { data: syusai, loading: syusaiLoading, error: syusaiError } = useMenuData("https://makeck.mattuu.com/api/syusai");
-    const { data: sirumono, loading: sirumonoLoading, error: sirumonoError } = useMenuData("https://makeck.mattuu.com/api/sirumono");
+    const { data: syusyoku, loading: _syusyokuLoading, error: _syusyokuError } = useMenuData("https://makeck.mattuu.com/api/syusyoku");
+    const { data: syusai, loading: _syusaiLoading, error: _syusaiError } = useMenuData("https://makeck.mattuu.com/api/syusai");
+    const { data: sirumono, loading: _sirumonoLoading, error: _sirumonoError } = useMenuData("https://makeck.mattuu.com/api/sirumono");
     var categorys = [syusyoku, syusai, sirumono];
 
     // 選択料理ID
@@ -115,7 +115,7 @@ function MenuConfirmation() {
                     調理時間目安 : {cookingTime} 分
                 </div> */}
                 {/* <div id='cookingTime'><Marquee>
-                    {`　　豆知識：${trivia[Math.round(Math.random()*trivia.length)]}`}
+                    {`豆知識：${trivia[Math.round(Math.random()*trivia.length)]}`}
                 </Marquee></div> */}
                 
                 <div id='menuListContainer'>
