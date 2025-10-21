@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import "../loader.css";
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
 import _Marquee from "react-fast-marquee";               // 文字スライド用
+import images from '../hooks/images';
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -106,7 +107,7 @@ function MenuConfirmation() {
                 </div>
             </div>
             <header>
-                <div className='backBtn' onClick={() => navigate('/RecipeSelection')}>＜</div>
+                <img src={images.backBtn} alt="戻るアイコン" className='backBtn' onClick={() => navigate("/RecipeSelection")} />
                 <div id='pageTitle'>{title}</div>
             </header>
 

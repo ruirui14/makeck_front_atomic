@@ -131,9 +131,7 @@ export default function RecipeSelection() {
     <div className="App">
       {/*ヘッダー*/}
       <header>
-        <div className="backBtn" onClick={() => navigate("/")}>
-          ＜
-        </div>
+        <img src={images.backBtn} className="backBtn" alt="戻るアイコン" onClick={() => navigate("/")} />
         <div id="pageTitle">{selectedCategory.name}</div>
       </header>
 

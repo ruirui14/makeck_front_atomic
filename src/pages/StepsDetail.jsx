@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import _images from '../hooks/images';
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
 import useVoice from '../hooks/useVoice';               // 音声認識
 import { _useEffect } from 'react';
+import images from '../hooks/images';
 
 // ハリボテデータ
 var _haribote = [{
@@ -86,7 +86,7 @@ function StepsDetail() {
     return (
         <div className='App'>
             <header>
-                <div className='backBtn' onClick={() => navigate('/cookProcess')}>＜</div>
+                <img src="../src/assets/images/backButton.png" alt="戻るアイコン" className='backBtn' onClick={() => navigate('/CookProcess')} />
                 <div id='pageTitle'>{title}</div>
             </header>
 

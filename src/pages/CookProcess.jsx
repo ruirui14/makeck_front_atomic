@@ -117,7 +117,7 @@ function CookProcess() {
             <div className='App noScroll'>
                 <header>
                     {/* 戻るボタン */}
-                    <div className='backBtn' onClick={() => navigate('/MaterialList')}>＜</div>
+                    <img src={images.backBtn} alt="戻るアイコン" onClick={() => navigate('/MaterialList')} />
                     <div id='pageTitle'>調理手順</div>
                 </header>
                 <main>
@@ -133,7 +133,7 @@ function CookProcess() {
             <div className='App noScroll'>
                 <header>
                     {/* 戻るボタン */}
-                    <div className='backBtn' onClick={() => navigate('/MaterialList')}>＜</div>
+                    <img src={images.backBtn} alt="戻るアイコン" onClick={() => navigate('/MaterialList')} />
                     <div id='pageTitle'>調理手順</div>
                 </header>
             </div>
@@ -145,7 +145,7 @@ function CookProcess() {
         <div className='App noScroll'>
             <header>
                 {/* 戻るボタン */}
-                <div className='backBtn' onClick={() => navigate('/MaterialList')}>＜</div>
+                <img src={images.backBtn} alt="戻るアイコン" className='backBtn' onClick={() => navigate('/MaterialList')} />
                 <div id='pageTitle'>調理手順</div>
             </header>
 
