@@ -152,12 +152,7 @@ export default function MaterialList() {
       <div className="App">
         {/*ヘッダー*/}
         <header>
-          <div
-            className="backBtn"
-            onClick={() => navigate("/menuConfirmation")}
-          >
-            ＜
-          </div>
+          <img src={images.backBtn} alt="戻るアイコン" className="backBtn" onClick={() => navigate("/menuConfirmation")} />
           <div id="pageTitle">材料一覧</div>
         </header>
 

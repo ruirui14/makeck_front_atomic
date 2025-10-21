@@ -29,9 +29,10 @@ header {
 
 /* 戻るボタン */
 .backBtn {
-    font-size: 30px;            /* 文字サイズ */
+    font-size: 30px;            /* 文字サイズ（<div>用） */
     z-index: 100;               /* レイヤー一番上に */
     margin-left: 10px;
+    height: 45px;               /* 画像の高さ指定 */
 }
 
 /* ヘッダー内要素 (ユーザアイコン、タイトル、ロゴ) */
