@@ -1,0 +1,4 @@
+//フッターのボタン
+function FooterButton() {
+    return 
+}
