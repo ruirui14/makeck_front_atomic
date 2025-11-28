@@ -1,0 +1,4 @@
+// フッターエリア
+function FooterSection() {
+    return
+}

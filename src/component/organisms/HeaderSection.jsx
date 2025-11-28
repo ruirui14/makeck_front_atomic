@@ -1,0 +1,4 @@
+// ヘッダーエリア
+function HeaderSection() {
+    return
+}
