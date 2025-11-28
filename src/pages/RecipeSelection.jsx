@@ -58,6 +58,44 @@ export default function RecipeSelection() {
     },
   ];
 
+  const menuRecipe = [
+    {
+      id: "5kbhajx",
+      image: images.FriedChicken,
+      name: "田舎風鶏のからあげ",
+    },
+    {
+      id: "a2spoij",
+      image: images.MeatPotatoes,
+      name: "変わり肉じゃが",
+    },
+    {
+      id: "ni8ttzn",
+      image: images.squidRisotto,
+      name: "イカのリゾット",
+    },
+    {
+      id: "k48tdze",
+      image: images.frankfurtSaute,
+      name: "フランクフルトのソテー",
+    },
+    {
+      id: "jf78btv",
+      image: images.coconutMilkJelly,
+      name: "ココナッツミルクのゼリー",
+    },
+    {
+      id: "wyfyi3i",
+      image: images.asuparaSoup,
+      name: "アスパラガスのスープ",
+    },
+    {
+      id: "4yja48v",
+      image: images.brownSeaweedSoup,
+      name: "ワカメスープ",
+    },
+  ];
+
   const localkey = "header_state";
 
   const localstroage = window.localStorage;
@@ -87,13 +125,6 @@ export default function RecipeSelection() {
 
   const _handleCard = (cardid) => {
     console.log(cardid);
-    // Swal.fire({
-    //     title: "レシピ追加",
-    //     icon: "success", // アイコンの種類（success, error, warning, info, question）
-    //     showConfirmButton: false,
-    //     timer: 1000,               // 3秒後にアラートを自動で消す
-    // });
-
     selectsData[now_state] = String(cardid);
 
     // localstorage に保存
@@ -131,7 +162,12 @@ export default function RecipeSelection() {
     <div className="App">
       {/*ヘッダー*/}
       <header>
-        <img src={images.backBtn} className="backBtn" alt="戻るアイコン" onClick={() => navigate("/")} />
+        <img
+          src={images.backBtn}
+          className="backBtn"
+          alt="戻るアイコン"
+          onClick={() => navigate("/")}
+        />
         <div id="pageTitle">{selectedCategory.name}</div>
       </header>
 
@@ -174,7 +210,7 @@ export default function RecipeSelection() {
 
         {/*レシピ選択コンテナ*/}
         <div id="recipeChoiceContainer">
-          {menus.map((menu, index) => {
+          {menuRecipe.map((menu, index) => {
             const isSelected = selectsData[now_state] === String(menu.id); // 選択状態を判定
             return (
               <div
@@ -192,7 +228,7 @@ export default function RecipeSelection() {
                       src={menu.image}
                       alt="menuImage"
                     />
-                    {/*選択中囲みなう*/}
+                    {/*選択中囲み*/}
                     {isSelected && <div className="overlay">選択中</div>}
                   </div>
                   <div className="menuName">{menu.name}</div>
@@ -209,7 +245,9 @@ export default function RecipeSelection() {
           {/* カスタムダイアログ */}
           <TestDialog
             isOpen={testDialogOpen}
-            test_content={selectsData}
+            test_content={selectsData.map((id) =>
+              menuRecipe.find((menu) => menu.id === id)
+            )}
             onConfirm={() => {
               setTestDialogOpen(false);
               console.log("okが押されました");
