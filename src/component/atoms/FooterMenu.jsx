@@ -1,0 +1,4 @@
+//フッターのメニューボタン
+function FooterMenu() {
+  return;
+}
