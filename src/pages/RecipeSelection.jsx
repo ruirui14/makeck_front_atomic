@@ -58,43 +58,44 @@ export default function RecipeSelection() {
     },
   ];
 
-  const menuRecipe = [
-    {
-      id: "5kbhajx",
-      image: images.FriedChicken,
-      name: "田舎風鶏のからあげ",
-    },
-    {
-      id: "a2spoij",
-      image: images.MeatPotatoes,
-      name: "変わり肉じゃが",
-    },
-    {
-      id: "ni8ttzn",
-      image: images.squidRisotto,
-      name: "イカのリゾット",
-    },
-    {
-      id: "k48tdze",
-      image: images.frankfurtSaute,
-      name: "フランクフルトのソテー",
-    },
-    {
-      id: "jf78btv",
-      image: images.coconutMilkJelly,
-      name: "ココナッツミルクのゼリー",
-    },
-    {
-      id: "wyfyi3i",
-      image: images.asuparaSoup,
-      name: "アスパラガスのスープ",
-    },
-    {
-      id: "4yja48v",
-      image: images.brownSeaweedSoup,
-      name: "ワカメスープ",
-    },
-  ];
+  // 仮のメニューデータ
+  // const menuRecipe = [
+  //   {
+  //     id: "5kbhajx",
+  //     image: images.FriedChicken,
+  //     name: "田舎風鶏のからあげ",
+  //   },
+  //   {
+  //     id: "a2spoij",
+  //     image: images.MeatPotatoes,
+  //     name: "変わり肉じゃが",
+  //   },
+  //   {
+  //     id: "ni8ttzn",
+  //     image: images.squidRisotto,
+  //     name: "イカのリゾット",
+  //   },
+  //   {
+  //     id: "k48tdze",
+  //     image: images.frankfurtSaute,
+  //     name: "フランクフルトのソテー",
+  //   },
+  //   {
+  //     id: "jf78btv",
+  //     image: images.coconutMilkJelly,
+  //     name: "ココナッツミルクのゼリー",
+  //   },
+  //   {
+  //     id: "wyfyi3i",
+  //     image: images.asuparaSoup,
+  //     name: "アスパラガスのスープ",
+  //   },
+  //   {
+  //     id: "4yja48v",
+  //     image: images.brownSeaweedSoup,
+  //     name: "ワカメスープ",
+  //   },
+  // ];
 
   const localkey = "header_state";
 
@@ -153,9 +154,21 @@ export default function RecipeSelection() {
   // メニューデータ取得
   //主食
   var { data, _loading, _error } = useMenuData(
-    `https://makeck.mattuu.com/api/${headerNames[now_state]["apipath"]}`
+    // `https://makeck.mattuu.com/api/${headerNames[now_state]["apipath"]}`
+    `https://makeck.mattuu.com/recipe/search_category`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        category: headerNames[now_state].name,
+      }),
+    }
   );
-  var menus = data ? data : [];
+  // var menus = data ? data : [];
+  console.log("APIレスポンス内容 >>>", data);
+  var menus = data?.result ?? [];
   console.log(menus);
 
   return (
@@ -210,7 +223,8 @@ export default function RecipeSelection() {
 
         {/*レシピ選択コンテナ*/}
         <div id="recipeChoiceContainer">
-          {menuRecipe.map((menu, index) => {
+          {/* {menuRecipe.map((menu, index) => { */}
+          {menus.map((menu, index) => {
             const isSelected = selectsData[now_state] === String(menu.id); // 選択状態を判定
             return (
               <div
@@ -246,7 +260,8 @@ export default function RecipeSelection() {
           <TestDialog
             isOpen={testDialogOpen}
             test_content={selectsData.map((id) =>
-              menuRecipe.find((menu) => menu.id === id)
+              // menuRecipe.find((menu) => menu.id === id)
+              menus.find((menu) => menu.id === id)
             )}
             onConfirm={() => {
               setTestDialogOpen(false);
