@@ -259,10 +259,11 @@ export default function RecipeSelection() {
           {/* カスタムダイアログ */}
           <TestDialog
             isOpen={testDialogOpen}
-            test_content={selectsData.map((id) =>
-              // menuRecipe.find((menu) => menu.id === id)
-              menus.find((menu) => menu.id === id)
-            )}
+            // test_content={selectsData.map((id) =>
+            //   // menuRecipe.find((menu) => menu.id === id)
+            //   menus.find((menu) => menu.id === id)
+            // )}
+            test_content={selectsData}
             onConfirm={() => {
               setTestDialogOpen(false);
               console.log("okが押されました");

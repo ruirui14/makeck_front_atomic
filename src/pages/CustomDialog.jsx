@@ -17,6 +17,9 @@ export default function CustomDialog({
   //onConfirm,
   onCancel,
 }) {
+  console.log("CustomDialog test_content:", test_content);
+  console.log("test_content[0]:", test_content[0]);
+  console.log("test_content[0]?.image:", test_content[0]?.image);
   return (
     <React.Fragment>
       
@@ -44,11 +47,12 @@ export default function CustomDialog({
         </DialogContent>
        
           <div className="dialogContainer">
-            <img src={test_content[0] ? `https://makeck.mattuu.com/images/${test_content[0]}.jpg` : images.selectStapleFood} width={125} height={95} alt="選択中レシピNO主食" />
+            {console.log("test_content[0]", test_content[0])}
+            <img src={test_content[0] ? `https://makeck.mattuu.com/recipe/images/${test_content[0]}.jpg` : images.selectStapleFood} width={125} height={95} alt="選択中レシピNO主食" />
             {/* <img src="https://makeck.mattuu.com/images/00e60535e7e545c6a43b3a0baafb9200.jpg" width={125} alt="" /> */}
-            <img src={test_content[1] ? `https://makeck.mattuu.com/images/${test_content[1]}.jpg` : images.selectMainDish} width={125} height={95} alt="選択中レシピNO主菜" />
-            <img src={test_content[2] ? `https://makeck.mattuu.com/images/${test_content[2]}.jpg` : images.selectSideDish} width={125} height={95} alt="選択中レシピNO副菜" />
-            <img src={test_content[3] ? `https://makeck.mattuu.com/images/${test_content[3]}.jpg` : images.selectSoup} width={125} height={95} alt="選択中レシピNO汁物" />
+            <img src={test_content[1] ? `https://makeck.mattuu.com/recipe/images/${test_content[1]}.jpg` : images.selectMainDish} width={125} height={95} alt="選択中レシピNO主菜" />
+            <img src={test_content[2] ? `https://makeck.mattuu.com/recipe/images/${test_content[2]}.jpg` : images.selectSideDish} width={125} height={95} alt="選択中レシピNO副菜" />
+            <img src={test_content[3] ? `https://makeck.mattuu.com/recipe/images/${test_content[3]}.jpg` : images.selectSoup} width={125} height={95} alt="選択中レシピNO汁物" />
           </div>
         
 
