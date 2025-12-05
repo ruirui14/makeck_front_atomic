@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "../loader.css";
-import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
+import useMenuData from "../hooks/useMenuData";         // チャート用データ取得
 import _Marquee from "react-fast-marquee";               // 文字スライド用
-import images from '../hooks/images';
+import images from "../hooks/images";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -27,33 +28,61 @@ const _trivia = [
     "野菜の皮には栄養が豊富に含まれていますので、できるだけ皮をむかずに調理すると良いです。",
     "ケーキを焼くときは、焼きすぎに注意して、中心部に竹串を刺してみて生地がついてこない状態が理想です。",
     "魚を調理するときには、塩をふってからしばらく置くと、食材のうまみが引き出されます。"
-]
-
+];
 
 // 調理時間
 const _ = 85;
 
 // 献立リスト
-const category = [
-    "主食", "主菜", "副菜", "汁物"
-]
+const category = ["主食", "主菜", "副菜", "汁物"];
 
 // ページ名
 const title = "献立確認";
 
 // 画面向き変更検知イベント
-window.addEventListener('orientationchange', () => {
+window.addEventListener("orientationchange", () => {
     window.location.reload();
-})
+});
 
 function MenuConfirmation() {
     // 画面遷移用フック
     const navigate = useNavigate();
 
-    const { data: syusyoku, loading: _syusyokuLoading, error: _syusyokuError } = useMenuData("https://makeck.mattuu.com/api/syusyoku");
-    const { data: syusai, loading: _syusaiLoading, error: _syusaiError } = useMenuData("https://makeck.mattuu.com/api/syusai");
-    const { data: sirumono, loading: _sirumonoLoading, error: _sirumonoError } = useMenuData("https://makeck.mattuu.com/api/sirumono");
-    var categorys = [syusyoku, syusai, sirumono];
+    const [materials, setMaterials] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchMaterials = async () => {
+            try {
+                setLoading(true);
+                const res = await fetch(
+                    "https://dev-makeck.mattuu.com//chart/sermaterials",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            recipe_ids: JSON.parse(localStorage.getItem("select_key")),
+                        }),
+                    }
+                );
+
+                if (!res.ok) throw new Error(`HTTP error" status: ${res.status}`);
+
+                const data = await res.json();
+                console.log("fetchMaterials 結果:", data);
+                setMaterials(data || []);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMaterials();
+    }, []);
 
     // 選択料理ID
     const selectId = JSON.parse(localStorage.getItem("select_key"));
