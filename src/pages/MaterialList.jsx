@@ -6,146 +6,161 @@ import useMenuData from "../hooks/useMenuData";
 
 
 export default function MaterialList() {
+  console.log("選択中のレシピIDリスト:");
+  var recipe_ids = JSON.parse(localStorage.getItem("select_key"));
+  console.log(recipe_ids);
 
-    const navigate = useNavigate();   //遷移のやつだよ
+  const navigate = useNavigate();   //遷移のやつだよ
 
-    const [selected, setSelected] = useState(null);     //アコーディオンリスト用
+  const [selected, setSelected] = useState(null);     //アコーディオンリスト用
 
 
-    const toggle = (i) => {
-        if (selected === i) {   //クリックされたアイテムがすでに選択されていたらselected(null)返す
-            return setSelected(null)
-        }
-        setSelected(i)  //クリックされたアイテムを選択状態にする
+  const toggle = (i) => {
+    if (selected === i) {   //クリックされたアイテムがすでに選択されていたらselected(null)返す
+        return setSelected(null)
     }
+    setSelected(i)  //クリックされたアイテムを選択状態にする
+  }
 
 
-    // サンプルデータ
-    // const datas = [
-    //     {
-    //         materialname: "フランクフルトのソテー",
-    //         answer:
-    //             [
-    //                 "フランクフルト",
-    //                 "ブロッコリー",
-    //                 "ニンニク",
-    //                 "赤唐辛子",
-    //                 "オリーブ油(サラダ油)",
-    //                 "塩、故障",
-    //             ],
-    //         number:
-    //             [
-    //                 "4",
-    //                 "420",
-    //                 "1",
-    //                 "1",
-    //                 "2",
-    //                 "1"
-    //             ],
-    //         unit:
-    //             [
-    //                 "本",
-    //                 "g",
-    //                 "かけ",
-    //                 "本",
-    //                 "大匙",
-    //                 "つまみ"
-    //             ],
+  // サンプルデータ
+  // const datas = [
+  //     {
+  //         materialname: "フランクフルトのソテー",
+  //         answer:
+  //             [
+  //                 "フランクフルト",
+  //                 "ブロッコリー",
+  //                 "ニンニク",
+  //                 "赤唐辛子",
+  //                 "オリーブ油(サラダ油)",
+  //                 "塩、故障",
+  //             ],
+  //         number:
+  //             [
+  //                 "4",
+  //                 "420",
+  //                 "1",
+  //                 "1",
+  //                 "2",
+  //                 "1"
+  //             ],
+  //         unit:
+  //             [
+  //                 "本",
+  //                 "g",
+  //                 "かけ",
+  //                 "本",
+  //                 "大匙",
+  //                 "つまみ"
+  //             ],
 
-    //     },
-    //     {
-    //         materialname: "イカのリゾット",
-    //         answer:
-    //             [
-    //                 "イカ",
-    //                 "ご飯",
-    //                 "タマネギ",
-    //                 "白ワイン",
-    //                 "オリーブオイル",
-    //                 "塩",
-    //                 "バター"
-    //             ],
-    //         number:
-    //             [
-    //                 "140",
-    //                 "1",
-    //                 "80",
-    //                 "1/3",
-    //                 "1",
-    //                 "1",
-    //                 "30"
-    //             ],
-    //         unit:
-    //             [
-    //                 "g",
-    //                 "カップ",
-    //                 "g",
-    //                 "カップ",
-    //                 "大匙",
-    //                 "つまみ",
-    //                 "g"
+  //     },
+  //     {
+  //         materialname: "イカのリゾット",
+  //         answer:
+  //             [
+  //                 "イカ",
+  //                 "ご飯",
+  //                 "タマネギ",
+  //                 "白ワイン",
+  //                 "オリーブオイル",
+  //                 "塩",
+  //                 "バター"
+  //             ],
+  //         number:
+  //             [
+  //                 "140",
+  //                 "1",
+  //                 "80",
+  //                 "1/3",
+  //                 "1",
+  //                 "1",
+  //                 "30"
+  //             ],
+  //         unit:
+  //             [
+  //                 "g",
+  //                 "カップ",
+  //                 "g",
+  //                 "カップ",
+  //                 "大匙",
+  //                 "つまみ",
+  //                 "g"
 
-    //             ]
-    //     },
-    //     {
-    //         materialname: "ココナッツミルクゼリー",
-    //         answer:
-    //             [
-    //                 "ココナッツミルク",
-    //                 "牛乳",
-    //                 "砂糖",
-    //                 "粉ゼラチン"
-    //             ],
+  //             ]
+  //     },
+  //     {
+  //         materialname: "ココナッツミルクゼリー",
+  //         answer:
+  //             [
+  //                 "ココナッツミルク",
+  //                 "牛乳",
+  //                 "砂糖",
+  //                 "粉ゼラチン"
+  //             ],
 
-    //         number:
-    //             [
-    //                 "200",
-    //                 "50",
-    //                 "2",
-    //                 "4"
-    //             ],
-    //         unit:
-    //             [
-    //                 "ml",
-    //                 "ml",
-    //                 "大匙",
-    //                 "g"
+  //         number:
+  //             [
+  //                 "200",
+  //                 "50",
+  //                 "2",
+  //                 "4"
+  //             ],
+  //         unit:
+  //             [
+  //                 "ml",
+  //                 "ml",
+  //                 "大匙",
+  //                 "g"
 
-    //             ]
-    //     },
-    //     {
-    //         materialname: "わかめスープ",
-    //         answer:
-    //             [
-    //                 "乾燥わかめ",
-    //                 "だし汁",
-    //                 "胡椒",
-    //                 "ごま油",
-    //                 "しょうゆ"
-    //             ],
-    //         number:
-    //             [
-    //                 "3",
-    //                 "300",
-    //                 "1",
-    //                 "1",
-    //                 "1"
-    //             ],
-    //         unit:
-    //             [
-    //                 "g",
-    //                 "ml",
-    //                 "つまみ",
-    //                 "小匙",
-    //                 "小匙"
+  //             ]
+  //     },
+  //     {
+  //         materialname: "わかめスープ",
+  //         answer:
+  //             [
+  //                 "乾燥わかめ",
+  //                 "だし汁",
+  //                 "胡椒",
+  //                 "ごま油",
+  //                 "しょうゆ"
+  //             ],
+  //         number:
+  //             [
+  //                 "3",
+  //                 "300",
+  //                 "1",
+  //                 "1",
+  //                 "1"
+  //             ],
+  //         unit:
+  //             [
+  //                 "g",
+  //                 "ml",
+  //                 "つまみ",
+  //                 "小匙",
+  //                 "小匙"
 
-    //             ]
-    //     },
-    // ]
+  //             ]
+  //     },
+  // ]
 
     //材料JSON取得
-    var { data, _loading, _error } = useMenuData(`https://makeck.mattuu.com/api/materials`)
+    var { data, _loading, _error } = useMenuData(
+      `https://dev-makeck.mattuu.com//chart/sermaterials`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "recipe_ids": recipe_ids
+        }),
+      }
+    )
     var material = data ? data : [];
+    console.log("取得した材料データ:");
     console.log(material);
 
     return (
