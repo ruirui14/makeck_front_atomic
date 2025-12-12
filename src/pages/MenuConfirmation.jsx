@@ -86,28 +86,35 @@ function MenuConfirmation() {
 
     // 選択料理ID
     const selectId = JSON.parse(localStorage.getItem("select_key"));
-    console.log(selectId);
+    const selectImages = JSON.parse(localStorage.getItem("select_image")) || [];
 
     // 料理データ
-    var selectMenus = []
-    var selectImages = [];
+    const selectMenus = selectId.map((id, index) => {
+        const matched  = materials.find((m) => m.id === id);
 
-    selectId?.forEach((element) => {
-        console.log(`id: ${element} を検索`);
+        return {
+            id,
+            name: matched ? matched.name : "(名前なし)",
+            image: selectImages[index] || images.default,
+        };;
+    })
 
-        categorys?.forEach((category) => {
-            category?.forEach((item) => {
-                // 一致したら終了
-                if (element == item.id.normalize("NFC")) {
-                    console.log("発見: " + item.name);
-                    selectImages.push(item.image);
-                    selectMenus.push(item);
-                    console.log(item);
-                    return true;
-                }
-            });
-        });
-    });
+    // selectId?.forEach((element) => {
+    //     console.log(`id: ${element} を検索`);
+
+    //     categorys?.forEach((category) => {
+    //         category?.forEach((item) => {
+    //             // 一致したら終了
+    //             if (element == item.id.normalize("NFC")) {
+    //                 console.log("発見: " + item.name);
+    //                 selectImages.push(item.image);
+    //                 selectMenus.push(item);
+    //                 console.log(item);
+    //                 return true;
+    //             }
+    //         });
+    //     });
+    // });
 
     // 画面が横になっている場合
     if (screen.orientation.angle != 0) {
@@ -125,7 +132,7 @@ function MenuConfirmation() {
     }
 
     console.log(selectMenus);
-    localStorage.setItem("select_image", JSON.stringify(selectImages));
+    localStorage.setItem("select_image", JSON.stringify(selectMenus.map((m) => m.image) ));
     
     return (
         <div className='App noScroll' >
