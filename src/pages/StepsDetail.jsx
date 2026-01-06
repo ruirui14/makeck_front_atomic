@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
 import DetailDescBase from '../component/atoms/DetailDescBase';
-import CookTime from '../component/atoms/CookTime';
+import DetailDescText from '../component/atoms/DetailDescText';
 
 // ハリボテデータ
 var _haribote = [{
@@ -96,12 +96,8 @@ function StepsDetail() {
                         <div className='captionBorder'></div>
                     </div>
                     <DetailDescBase>
-                        <CookTime time={0} />   
+                        <DetailDescText desc={data?.description}/>
                     </DetailDescBase>
-                    
-                    {/* TODO: 後でCookTimeからこれ↓に置き換え */}
-                    {/* <div className='paragraph'>{data?.description}</div> */}
-                    
                 </div>
             </main>
         </div>
