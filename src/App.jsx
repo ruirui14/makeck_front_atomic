@@ -6,6 +6,7 @@ import StepsDetail from './pages/StepsDetail'
 import React from 'react';
 import RecipeSelection from './pages/RecipeSelection'
 import MaterialList from './pages/MaterialList'
+import TestH from './pages/TestH';  // TODO: テストページ(後で削除)
 
 import './styles/index.css';
 import './styles/header.css';
@@ -35,6 +36,9 @@ function App() {
           <Route path='/stepsDetail/:id' element={<StepsDetail />}></Route>
           <Route path='/RecipeSelection' element={<RecipeSelection />}></Route>
           <Route path='/materialList' element={<MaterialList />}></Route>
+
+          {/* TODO: テスト用ページ(後で消す) */}
+          <Route path='/testH' element={<TestH />}></Route>
         </Routes>
       </Router>
     </>
