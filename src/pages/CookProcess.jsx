@@ -7,6 +7,7 @@ import images from "../hooks/images"; // 画像取得
 import useMenuData from "../hooks/useMenuData"; // チャート用データ取得
 import useCreateChart from "../hooks/useCreateChart"; // チャート用データ整形
 import { useRef } from "react";
+import CookTime from "../component/atoms/CookTime";
 
 function CookProcess() {
   var recipe_ids = JSON.parse(localStorage.getItem("select_key"));
@@ -99,7 +100,7 @@ function CookProcess() {
         </header>
 
         <main>
-          <div id="cookingTime">調理時間目安 : {chartData?.totalTime} 分</div>
+          <CookTime time={ chartData?.totalTime } />
 
           <div id="processCategory">
             <div className="colorBox yellow"></div>
