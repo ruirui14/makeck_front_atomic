@@ -4,6 +4,8 @@ import "../loader.css";
 import useMenuData from "../hooks/useMenuData";         // チャート用データ取得
 import _Marquee from "react-fast-marquee";               // 文字スライド用
 import images from "../hooks/images";
+import ButtonBase from "../component/atoms/ButtonBase";
+
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -178,14 +180,14 @@ function MenuConfirmation() {
             </main>
 
             <footer id='decisionFooter'>
-                <button type='button' id='decisionBtn' onClick={() => {
+                <ButtonBase type='button' id='decisionBtn' onClick={() => {
                         // loadscreen 出す
                         document.querySelector('.loader_screen').style.display = "flex"
                         setTimeout(() => {
                             navigate('/MaterialList')
                         }, 3000)
                     }
-                }>手順書作成</button>
+                }>手順書作成</ButtonBase>
             </footer>
         </div>
     );
