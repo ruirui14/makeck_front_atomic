@@ -1,8 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
-import useVoice from '../hooks/useVoice';               // 音声認識
-import { _useEffect } from 'react';
-import images from '../hooks/images';
+import DetailDescBase from '../component/atoms/DetailDescBase';
+import DetailDescText from '../component/atoms/DetailDescText';
 
 // ハリボテデータ
 var _haribote = [{
@@ -28,8 +27,6 @@ var _haribote = [{
     ],
     "description": "フライパンにオリーブオイルを熱し、フランクフルトを入れて焼き色がつくまで炒め、塩と黒こしょうで味を調えます。"
 }]
-
-
 
 function StepsDetail() {
     // テスト用データ受取
@@ -58,32 +55,6 @@ function StepsDetail() {
     `https://dev-makeck.mattuu.com/recipe/${id}`
     );    
     const _detail = data;
-
-    const { _transcript, _listening, _resetTranscript, _startListening, _stopListening } = useVoice();
-
-    // useEffect(() => {
-    //     // 音声認識が開始されるときに確認
-    //     console.log("音声認識状態:", listening);
-
-    //     // 音声認識が開始されていない場合に開始
-    //     if (!listening) {
-    //         startListening();
-    //     }
-    // }, [listening]);
-
-    // 音声認識結果の更新
-    // useEffect(() => {
-    //     if (transcript.trim()) {
-    //         console.log("音声認識結果: ", transcript);
-
-    //             if (transcript.trim().replace(/[、。]/g, "") == "戻る") {
-    //                 navigate('/cookProcess/');
-    //             }
-    
-    //             resetTranscript();
-            
-    //     }
-    // }, [transcript]);
 
     return (
         <div className='App'>
@@ -124,9 +95,9 @@ function StepsDetail() {
                         <div className='captionText'>調理方法</div>
                         <div className='captionBorder'></div>
                     </div>
-                    <div id='descContainer'>
-                        <div className='paragraph'>{data?.description}</div>
-                    </div>
+                    <DetailDescBase>
+                        <DetailDescText desc={data?.description}/>
+                    </DetailDescBase>
                 </div>
             </main>
         </div>

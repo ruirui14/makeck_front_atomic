@@ -1,4 +1,8 @@
 //ヘッダーの背景
 function HeaderBase() {
-  return;
+  return(
+    <header></header>
+  );
 }
+
+export default HeaderBase;

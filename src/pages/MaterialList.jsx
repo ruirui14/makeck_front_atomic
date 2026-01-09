@@ -3,6 +3,7 @@ import _React from 'react';
 import images from '../hooks/images';
 import { useState } from "react";
 import useMenuData from "../hooks/useMenuData";
+import CookTime from "../component/atoms/CookTime";
 
 
 export default function MaterialList() {
@@ -172,8 +173,8 @@ export default function MaterialList() {
         </header>
 
         <main>
-          <div id="cookingTime">調理時間目安 : 分</div>
-
+          <CookTime time={""} />
+      
           <div className="wrapper">
             <div className="accordion">
               {material.map((item, i) => (

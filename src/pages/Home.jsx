@@ -1,17 +1,13 @@
 import images from '../hooks/images';
 import { useNavigate } from "react-router-dom";
-import BaseButton from "../component/atoms/ButtonBase";
+import ButtonBase from '../component/atoms/ButtonBase';
+import HeaderBase from '../component/atoms/HeaderBase';
 
 function Home() {
   const navigate = useNavigate();
   return (
     <div className="App noScroll">
-      <header>
-        <img src={images.icon} id="userIcon" alt="icon" />
-        <div id="appName">MakeCK</div>
-        {/*デモ後追加*/}
-        {/* {<img src={images.logo} id="appLogo" alt="logo"></img>} */}
-      </header>
+      <HeaderBase />
 
       <main className="">
         <div className="cookingImgwrapper">
