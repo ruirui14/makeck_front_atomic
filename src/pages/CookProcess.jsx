@@ -9,6 +9,8 @@ import useCreateChart from "../hooks/useCreateChart"; // チャート用デー�
 import { useRef } from "react";
 import CookTime from "../component/atoms/CookTime";
 import PageTitle from "../component/atoms/PageTitle";
+import ButtonBase from "../component/atoms/ButtonBase";
+
 
 function CookProcess() {
   var recipe_ids = JSON.parse(localStorage.getItem("select_key"));
@@ -101,7 +103,7 @@ function CookProcess() {
         </header>
 
         <main>
-          <CookTime time={ chartData?.totalTime } />
+          <CookTime time={chartData?.totalTime} />
 
           <div id="processCategory">
             <div className="colorBox yellow"></div>
@@ -270,13 +272,13 @@ function CookProcess() {
         </main>
 
         <footer id="decisionFooter">
-          <button
+          <ButtonBase
             type="button"
             id="decisionBtn"
             onClick={() => dialogRef.current.showModal()}
           >
             {nextPage.title}
-          </button>
+          </ButtonBase>
         </footer>
       </div>
     );

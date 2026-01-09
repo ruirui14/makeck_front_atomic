@@ -4,6 +4,7 @@ import images from '../hooks/images';
 import { useState } from "react";
 import useMenuData from "../hooks/useMenuData";
 import CookTime from "../component/atoms/CookTime";
+import ButtonBase from "../component/atoms/ButtonBase";
 
 
 export default function MaterialList() {
@@ -168,13 +169,18 @@ export default function MaterialList() {
       <div className="App">
         {/*ヘッダー*/}
         <header>
-          <img src={images.backBtn} alt="戻るアイコン" className="backBtn" onClick={() => navigate("/menuConfirmation")} />
+          <img
+            src={images.backBtn}
+            alt="戻るアイコン"
+            className="backBtn"
+            onClick={() => navigate("/menuConfirmation")}
+          />
           <div id="pageTitle">材料一覧</div>
         </header>
 
         <main>
           <CookTime time={""} />
-      
+
           <div className="wrapper">
             <div className="accordion">
               {material.map((item, i) => (
@@ -201,10 +207,7 @@ export default function MaterialList() {
                             ))} */}
                     {item.materials.map((line, index) => (
                       <div className="material" key={index}>
-                        <div className="materialNameP">
-                          {" "}
-                          {line.name}{" "}
-                        </div>
+                        <div className="materialNameP"> {line.name} </div>
                         <div className="quantityM">
                           {line.quantity || ""}
                           {line.unit || ""}
@@ -224,13 +227,13 @@ export default function MaterialList() {
 
         {/*フッター*/}
         <footer id="decisionFooter">
-          <button
+          <ButtonBase
             type="button"
             id="decisionBtn"
             onClick={() => navigate("/cookProcess")}
           >
             調理開始！
-          </button>
+          </ButtonBase>
         </footer>
       </div>
     );
