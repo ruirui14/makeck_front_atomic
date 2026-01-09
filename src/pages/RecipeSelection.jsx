@@ -5,6 +5,8 @@ import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
 import ButtonBase from "../component/atoms/ButtonBase";
+import ArrowIcon from "../component/atoms/ArrowIcon";
+
 // import Swal from "sweetalert2";
 
 export default function RecipeSelection() {
@@ -184,12 +186,7 @@ export default function RecipeSelection() {
     <div className="App">
       {/*ヘッダー*/}
       <header>
-        <img
-          src={images.backBtn}
-          className="backBtn"
-          alt="戻るアイコン"
-          onClick={() => navigate("/")}
-        />
+        <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/")}/>
         <div id="pageTitle">{selectedCategory.name}</div>
       </header>
 
