@@ -20,15 +20,21 @@ function Home() {
 
         <div className="selectionMenu">
           <div className="menuTitle">レシピ選択方法</div>
-          <BaseButton id="fromFirst" onClick={() => navigate("/RecipeSelection")}>
+          <ButtonBase
+            id="fromFirst"
+            onClick={() => navigate("/RecipeSelection")}
+          >
             <p className="btnText">1からレシピ選択</p>
-             <p className="arrow">＞</p>
-          </BaseButton>
+            <p className="arrow">＞</p>
+          </ButtonBase>
 
-          <BaseButton id="fromRegistered" onClick={() => navigate("/menuConfirmation")}>
+          <ButtonBase
+            id="fromRegistered"
+            onClick={() => navigate("/menuConfirmation")}
+          >
             <p className="btnText">登録レシピから選択</p>
-             <p className="arrow">＞</p>
-          </BaseButton>
+            <p className="arrow">＞</p>
+          </ButtonBase>
         </div>
 
         <div className="supplementText">coming soon...</div>
