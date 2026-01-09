@@ -4,6 +4,7 @@ import images from "../hooks/images";
 import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
+import ButtonBase from "../component/atoms/ButtonBase";
 // import Swal from "sweetalert2";
 
 export default function RecipeSelection() {
@@ -207,18 +208,18 @@ export default function RecipeSelection() {
 
         {/*主食 主菜 副菜 汁物 遷移ボタン*/}
         <div className="wrapButton">
-          <button className="seniButton" onClick={() => handleClick(0)}>
+          <ButtonBase className="seniButton" onClick={() => handleClick(0)}>
             主食
-          </button>
-          <button className="seniButton" onClick={() => handleClick(1)}>
+          </ButtonBase>
+          <ButtonBase className="seniButton" onClick={() => handleClick(1)}>
             主菜
-          </button>
-          <button className="seniButton" onClick={() => handleClick(2)}>
+          </ButtonBase>
+          <ButtonBase className="seniButton" onClick={() => handleClick(2)}>
             副菜
-          </button>
-          <button className="seniButton" onClick={() => handleClick(3)}>
+          </ButtonBase>
+          <ButtonBase className="seniButton" onClick={() => handleClick(3)}>
             汁物
-          </button>
+          </ButtonBase>
         </div>
 
         {/*区切り線*/}
@@ -290,13 +291,12 @@ export default function RecipeSelection() {
 
       {/*レシピ選択中モーダル内フッター*/}
       <footer id="decisionFooter">
-        <button
-          type="button"
+        <ButtonBase
           id="decisionBtn"
           onClick={() => navigate("/menuConfirmation")}
         >
           献立決定
-        </button>
+        </ButtonBase>
       </footer>
     </div>
   );

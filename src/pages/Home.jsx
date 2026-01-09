@@ -1,6 +1,6 @@
 import images from '../hooks/images';
 import { useNavigate } from "react-router-dom";
-import ButtonBase from '../component/atoms/ButtonBase';
+import BaseButton from "../component/atoms/ButtonBase";
 
 function Home() {
   const navigate = useNavigate();
@@ -24,13 +24,15 @@ function Home() {
 
         <div className="selectionMenu">
           <div className="menuTitle">レシピ選択方法</div>
-          <ButtonBase id="fromFirst" onClick={() => navigate("/RecipeSelection")}>
+          <BaseButton id="fromFirst" onClick={() => navigate("/RecipeSelection")}>
             <p className="btnText">1からレシピ選択</p>
-          </ButtonBase>
+             <p className="arrow">＞</p>
+          </BaseButton>
 
-          <ButtonBase id="fromRegistered" onClick={() => navigate("/menuConfirmation")}>
+          <BaseButton id="fromRegistered" onClick={() => navigate("/menuConfirmation")}>
             <p className="btnText">登録レシピから選択</p>
-          </ButtonBase>
+             <p className="arrow">＞</p>
+          </BaseButton>
         </div>
 
         <div className="supplementText">coming soon...</div>
