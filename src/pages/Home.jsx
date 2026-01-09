@@ -2,6 +2,7 @@ import images from '../hooks/images';
 import { useNavigate } from "react-router-dom";
 import ButtonBase from '../component/atoms/ButtonBase';
 import HeaderBase from '../component/atoms/HeaderBase';
+import ArrowIcon from "../component/atoms/ArrowIcon";
 
 function Home() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Home() {
             onClick={() => navigate("/RecipeSelection")}
           >
             <p className="btnText">1からレシピ選択</p>
-            <img className="arrow" src={images.rightArrow} alt="進むボタン" />
+            <ArrowIcon direction="right" className="arrow" />
           </ButtonBase>
 
           <ButtonBase
@@ -33,7 +34,7 @@ function Home() {
             onClick={() => navigate("/menuConfirmation")}
           >
             <p className="btnText">登録レシピから選択</p>
-            <img className="arrow" src={images.rightArrow} alt="進むボタン" />
+            <ArrowIcon direction="right" className="arrow" />
           </ButtonBase>
         </div>
 

@@ -5,6 +5,7 @@ import { useState } from "react";
 import useMenuData from "../hooks/useMenuData";
 import CookTime from "../component/atoms/CookTime";
 import ButtonBase from "../component/atoms/ButtonBase";
+import ArrowIcon from "../component/atoms/ArrowIcon";
 
 
 export default function MaterialList() {
@@ -169,12 +170,7 @@ export default function MaterialList() {
       <div className="App">
         {/*ヘッダー*/}
         <header>
-          <img
-            src={images.backBtn}
-            alt="戻るアイコン"
-            className="backBtn"
-            onClick={() => navigate("/menuConfirmation")}
-          />
+          <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/menuConfirmation")} />
           <div id="pageTitle">材料一覧</div>
         </header>
 
@@ -195,9 +191,11 @@ export default function MaterialList() {
                     {/* 表示、非表示を切り替えるボタン */}
                     <span>
                       {selected === i ? (
-                        <img src={images.closeButton} />
+                        // <img src={images.closeButton} />
+                        <ArrowIcon direction="top" />
                       ) : (
-                        <img src={images.openButton} />
+                        // <img src={images.openButton} />
+                        <ArrowIcon direction="down" />
                       )}
                     </span>
                   </div>
