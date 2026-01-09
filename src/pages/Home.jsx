@@ -25,7 +25,7 @@ function Home() {
             onClick={() => navigate("/RecipeSelection")}
           >
             <p className="btnText">1からレシピ選択</p>
-            <p className="arrow">＞</p>
+            <img className="arrow" src={images.rightArrow} alt="進むボタン" />
           </ButtonBase>
 
           <ButtonBase
@@ -33,7 +33,7 @@ function Home() {
             onClick={() => navigate("/menuConfirmation")}
           >
             <p className="btnText">登録レシピから選択</p>
-            <p className="arrow">＞</p>
+            <img className="arrow" src={images.rightArrow} alt="進むボタン" />
           </ButtonBase>
         </div>
 
