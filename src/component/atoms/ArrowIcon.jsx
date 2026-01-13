@@ -2,6 +2,8 @@
 import PropTypes from "prop-types";
 import images from "../../hooks/images";
 function ArrowIcon({ direction = "right", alt = "矢印", className, onClick }) {
+   console.log("images:", images);
+   console.log("direction:", direction, images?.[direction]);
   const arrowMap = {
     right: images.rightArrow,
     left: images.backBtn,
