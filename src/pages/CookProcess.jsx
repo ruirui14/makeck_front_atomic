@@ -10,6 +10,7 @@ import { useRef } from "react";
 import CookTime from "../component/atoms/CookTime";
 import PageTitle from "../component/atoms/PageTitle";
 import ButtonBase from "../component/atoms/ButtonBase";
+import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 
 
@@ -114,6 +115,7 @@ function CookProcess() {
           <div id="imagesBorder">
             <div id="imageContainer" className="grid">
               {selectImage.map((element, index) => {
+                console.log("element: ", element)
                 return (
                   <div key={`menuImage-${index}`} className="imageWrapper">
                     <div
@@ -126,11 +128,9 @@ function CookProcess() {
                     >
                       <div id="bubbleText">{chartData?.menu?.[index].name}</div>
                     </div>
-                    <img
-                      src={element}
-                      className="gridItem"
-                      alt="献立画像"
-                      onClick={() => {
+                    {/* 料理画像コンポーネント */}
+                    <RecipeImage image={element} page="CookProcess"
+                      onclick={() => {
                         var bubble = document.getElementsByClassName(
                           `bubble-${index}`
                         );
@@ -140,7 +140,8 @@ function CookProcess() {
                           bubble[0].style.display = "none";
                         }, 1000);
                       }}
-                    ></img>
+                      
+                    />
                   </div>
                 );
               })}
