@@ -11,6 +11,7 @@ import CookTime from "../component/atoms/CookTime";
 import PageTitle from "../component/atoms/PageTitle";
 import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
+import ArrowIcon from "../component/atoms/ArrowIcon";
 
 
 function CookProcess() {
@@ -94,12 +95,7 @@ function CookProcess() {
       <div className="App noScroll">
         <header>
           {/* 戻るボタン */}
-          <img
-            src={images.backBtn}
-            alt="戻るアイコン"
-            className="backBtn"
-            onClick={() => navigate("/MaterialList")}
-          />
+          <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/MaterialList")} />
           <PageTitle id={"pageTitle"} pageName={"調理手順"}></PageTitle>
         </header>
 

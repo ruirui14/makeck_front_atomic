@@ -2,6 +2,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
 import DetailDescBase from '../component/atoms/DetailDescBase';
 import DetailDescText from '../component/atoms/DetailDescText';
+import ArrowIcon from "../component/atoms/ArrowIcon";
+import images from "../hooks/images";
 
 // ハリボテデータ
 var _haribote = [{
@@ -55,54 +57,51 @@ function StepsDetail() {
     `https://dev-makeck.mattuu.com/recipe/${id}`
     );    
     const _detail = data;
-
     return (
-        <div className='App'>
-            <header>
-                <img src="../src/assets/images/backButton.png" alt="戻るアイコン" className='backBtn' onClick={() => navigate('/CookProcess')} />
-                <div id='pageTitle'>{title}</div>
-            </header>
+      <div className="App">
+        <header>
+          <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/CookProcess")} />
+          <div id="pageTitle">{title}</div>
+        </header>
 
-            <main>
-                {/* 調理手順番号、料理名 */}
-                <div id='stepTitle'>
-                    <div id='stepNumber'>{details?.displayName}</div>
-                    <div id='stepName'>{details?.recipieName}</div>
-                </div>
+        <main>
+          {/* 調理手順番号、料理名 */}
+          <div id="stepTitle">
+            <div id="stepNumber">{details?.displayName}</div>
+            <div id="stepName">{details?.recipieName}</div>
+          </div>
 
-                {/* 材料一覧 */}
-                <div id='materialsContainer'>
-                    <div className='caption'>
-                        <div className='captionText'>使用する材料</div>
-                        <div className='captionBorder'></div>
-                    </div>
-                    <div className='materialList'>
-                        {data?.materials.map((material, index) => {
-                            console.log('material : ', material)
-                            return(
-                                <div className='material' key={index}>
-                                    <div className='materialName'>{material.name}</div>
-                                    <div className='quantity'>{material.quantity}</div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
+          {/* 材料一覧 */}
+          <div id="materialsContainer">
+            <div className="caption">
+              <div className="captionText">使用する材料</div>
+              <div className="captionBorder"></div>
+            </div>
+            <div className="materialList">
+              {data?.materials.map((material, index) => {
+                console.log("material : ", material);
+                return (
+                  <div className="material" key={index}>
+                    <div className="materialName">{material.name}</div>
+                    <div className="quantity">{material.quantity}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
-                {/* 調理方法 */}
-                <div id='methodContainer'>
-                    <div className='caption'>
-                        <div className='captionText'>調理方法</div>
-                        <div className='captionBorder'></div>
-                    </div>
-                    <DetailDescBase>
-                        <DetailDescText desc={data?.description}/>
-                    </DetailDescBase>
-                </div>
-            </main>
-        </div>
-
-
+          {/* 調理方法 */}
+          <div id="methodContainer">
+            <div className="caption">
+              <div className="captionText">調理方法</div>
+              <div className="captionBorder"></div>
+            </div>
+            <DetailDescBase>
+              <DetailDescText desc={data?.description} />
+            </DetailDescBase>
+          </div>
+        </main>
+      </div>
     );
 }
 

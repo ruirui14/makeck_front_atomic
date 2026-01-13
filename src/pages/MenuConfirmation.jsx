@@ -6,6 +6,7 @@ import _Marquee from "react-fast-marquee";               // 文字スライド�
 import images from "../hooks/images";
 import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
+import ArrowIcon from "../component/atoms/ArrowIcon";
 
 
 // 豆知識(仮データ)
@@ -146,7 +147,7 @@ function MenuConfirmation() {
                 </div>
             </div>
             <header>
-                <img src={images.backBtn} alt="戻るアイコン" className='backBtn' onClick={() => navigate("/RecipeSelection")} />
+                <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/RecipeSelection")} />
                 <div id='pageTitle'>{title}</div>
             </header>
 

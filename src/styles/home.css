@@ -79,7 +79,7 @@
 /* ボタン内矢印 */
 .arrow {
   font-size: 15px;
-  width: 20%;
+  margin-left: 20px;
 }
 
 /* 補足テキスト */
