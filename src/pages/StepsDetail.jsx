@@ -4,6 +4,8 @@ import DetailDescBase from '../component/atoms/DetailDescBase';
 import DetailDescText from '../component/atoms/DetailDescText';
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import images from "../hooks/images";
+import DetailTitleBox from '../component/atoms/DetailTitleBox';
+import DetailNumber from '../component/atoms/DetailNumber';
 
 // ハリボテデータ
 var _haribote = [{
@@ -33,9 +35,10 @@ var _haribote = [{
 function StepsDetail() {
     // テスト用データ受取
     var details = {
-        "displayName" : localStorage.getItem("displayName"),
-        "recipieName" : localStorage.getItem("recipieName")
+      "displayName" : localStorage.getItem("displayName"),
+      "recipeName" : localStorage.getItem("recipieName")
     }
+
 
     // 手順ID受取
     const { id } = useParams();
@@ -66,11 +69,13 @@ function StepsDetail() {
 
         <main>
           {/* 調理手順番号、料理名 */}
-          <div id="stepTitle">
+          {/* <div id="stepTitle">
             <div id="stepNumber">{details?.displayName}</div>
-            <div id="stepName">{details?.recipieName}</div>
-          </div>
-
+            <div id="stepName">{details?.recipeName}</div>
+          </div> */}
+          <DetailTitleBox recipeName={details.recipeName} >
+            <DetailNumber num={details.displayName}/>
+          </DetailTitleBox>
           {/* 材料一覧 */}
           <div id="materialsContainer">
             <div className="caption">
