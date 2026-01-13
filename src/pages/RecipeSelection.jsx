@@ -5,6 +5,7 @@ import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
 import ButtonBase from "../component/atoms/ButtonBase";
+import RecipeImage from "../component/atoms/RecipeImage";
 // import Swal from "sweetalert2";
 
 export default function RecipeSelection() {
@@ -246,11 +247,7 @@ export default function RecipeSelection() {
                   onClick={() => selectRecipeIdChanger(menu.id, menu.image)}
                 >
                   <div className="imageWrapper">
-                    <img
-                      className="menuImageR"
-                      src={menu.image}
-                      alt="menuImage"
-                    />
+                    <RecipeImage image={menu.image} page="RecipeSelection" />
                     {/*選択中囲み*/}
                     {isSelected && <div className="overlay">選択中</div>}
                   </div>

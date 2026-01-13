@@ -5,6 +5,7 @@ import useMenuData from "../hooks/useMenuData";         // チャート用デー
 import _Marquee from "react-fast-marquee";               // 文字スライド用
 import images from "../hooks/images";
 import ButtonBase from "../component/atoms/ButtonBase";
+import RecipeImage from "../component/atoms/RecipeImage";
 
 
 // 豆知識(仮データ)
@@ -166,7 +167,7 @@ function MenuConfirmation() {
                                     <div className='category'>{category[index]}</div>
                                     <div className='border'></div>
                                     <div className='menu'>
-                                        <img className='menuImage' src={menu.image}></img>
+                                        <RecipeImage image={menu.image} page={"MenuConfirmation"} />
                                         <div className='menuName'>{menu.name}</div>
                                     </div>
                                     
