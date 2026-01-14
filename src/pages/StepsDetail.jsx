@@ -4,6 +4,7 @@ import DetailDescBase from '../component/atoms/DetailDescBase';
 import DetailDescText from '../component/atoms/DetailDescText';
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import images from "../hooks/images";
+import HeadingLine from "../component/atoms/HeadingLine";
 
 // ハリボテデータ
 var _haribote = [{
@@ -60,7 +61,11 @@ function StepsDetail() {
     return (
       <div className="App">
         <header>
-          <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/CookProcess")} />
+          <ArrowIcon
+            direction="left"
+            className="backBtn"
+            onClick={() => navigate("/CookProcess")}
+          />
           <div id="pageTitle">{title}</div>
         </header>
 
@@ -75,7 +80,7 @@ function StepsDetail() {
           <div id="materialsContainer">
             <div className="caption">
               <div className="captionText">使用する材料</div>
-              <div className="captionBorder"></div>
+              <HeadingLine className="captionBorder" />
             </div>
             <div className="materialList">
               {data?.materials.map((material, index) => {
@@ -94,7 +99,7 @@ function StepsDetail() {
           <div id="methodContainer">
             <div className="caption">
               <div className="captionText">調理方法</div>
-              <div className="captionBorder"></div>
+              <HeadingLine className="captionBorder" />
             </div>
             <DetailDescBase>
               <DetailDescText desc={data?.description} />

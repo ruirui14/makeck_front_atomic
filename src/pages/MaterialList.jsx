@@ -6,7 +6,7 @@ import useMenuData from "../hooks/useMenuData";
 import CookTime from "../component/atoms/CookTime";
 import ButtonBase from "../component/atoms/ButtonBase";
 import ArrowIcon from "../component/atoms/ArrowIcon";
-
+import HeadingLine from "../component/atoms/HeadingLine";
 
 export default function MaterialList() {
   console.log("選択中のレシピIDリスト:");
@@ -170,7 +170,11 @@ export default function MaterialList() {
       <div className="App">
         {/*ヘッダー*/}
         <header>
-          <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/menuConfirmation")} />
+          <ArrowIcon
+            direction="left"
+            className="backBtn"
+            onClick={() => navigate("/menuConfirmation")}
+          />
           <div id="pageTitle">材料一覧</div>
         </header>
 
@@ -184,7 +188,7 @@ export default function MaterialList() {
                   {" "}
                   {/*パフォーマンス向上のためらしい*/}
                   {/* {console.log("インデックス番号:", i, "要素:", item)} */}
-                  <div className="title" onClick={() => toggle(i)}>
+                  <HeadingLine className="title" onClick={() => toggle(i)}>
                     {/*料理名*/}
                     <div className="materialname">{item.name}</div>
 
@@ -198,7 +202,8 @@ export default function MaterialList() {
                         <ArrowIcon direction="down" />
                       )}
                     </span>
-                  </div>
+                  </HeadingLine>
+                  
                   <div className={selected === i ? "content show" : "content"}>
                     {/* {item.number.map((num,index) => (
                                 <p key={index}>{num}</p>
