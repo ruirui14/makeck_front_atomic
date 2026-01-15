@@ -7,6 +7,7 @@ import images from "../hooks/images";
 import HeadingLine from "../component/atoms/HeadingLine";
 import DetailTitleBox from '../component/atoms/DetailTitleBox';
 import DetailNumber from '../component/atoms/DetailNumber';
+import SectionLine from "../component/atoms/SectionLine";
 
 
 // ハリボテデータ
@@ -92,10 +93,10 @@ function StepsDetail() {
               {data?.materials.map((material, index) => {
                 console.log("material : ", material);
                 return (
-                  <div className="material" key={index}>
-                    <div className="materialName">{material.name}</div>
-                    <div className="quantity">{material.quantity}</div>
-                  </div>
+                  <SectionLine className="material" key={index}>
+                      <div className="materialName">{material.name}</div>
+                      <div className="quantity">{material.quantity}</div>
+                  </SectionLine>
                 );
               })}
             </div>
