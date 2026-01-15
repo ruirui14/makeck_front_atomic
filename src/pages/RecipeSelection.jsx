@@ -7,7 +7,7 @@ import useMenuData from "../hooks/useMenuData";
 import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
-
+import SectionLine from "../component/atoms/SectionLine";
 // import Swal from "sweetalert2";
 
 export default function RecipeSelection() {
@@ -187,7 +187,11 @@ export default function RecipeSelection() {
     <div className="App">
       {/*ヘッダー*/}
       <header>
-        <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/")}/>
+        <ArrowIcon
+          direction="left"
+          className="backBtn"
+          onClick={() => navigate("/")}
+        />
         <div id="pageTitle">{selectedCategory.name}</div>
       </header>
 
@@ -203,7 +207,6 @@ export default function RecipeSelection() {
             />
           </form>
         </div>
-
         {/*主食 主菜 副菜 汁物 遷移ボタン*/}
         <div className="wrapButton">
           <ButtonBase className="seniButton" onClick={() => handleClick(0)}>
@@ -219,15 +222,14 @@ export default function RecipeSelection() {
             汁物
           </ButtonBase>
         </div>
-
+        
         {/*区切り線*/}
-        <div className="line"></div>
+        <SectionLine className="line"/>
 
         {/*説明文*/}
         <div className="explanation">
           <p>レシピを選択してください</p>
         </div>
-
         {/*レシピ選択コンテナ*/}
         <div id="recipeChoiceContainer">
           {/* {menuRecipe.map((menu, index) => { */}
@@ -254,9 +256,7 @@ export default function RecipeSelection() {
             );
           })}
         </div>
-
         {/* <img className="selectNow" src={images.selectNow} alt="選択中囲み" /> */}
-
         {/*レシピ選択中モーダル*/}
         <div>
           {/* カスタムダイアログ */}
