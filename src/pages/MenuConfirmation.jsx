@@ -8,6 +8,7 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
+import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -178,7 +179,7 @@ function MenuConfirmation() {
             console.log(menu.name);
             return (
               <div className="menuWrapper" key={index}>
-                <div className="category">{category[index]}</div>
+                <RecipeCategoryName category={category[index]} />
                 <div className="border"></div>
                 <HeadingLine className="menu">
                   <RecipeImage image={menu.image} page={"MenuConfirmation"} />
