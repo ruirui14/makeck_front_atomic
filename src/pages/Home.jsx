@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonBase from '../component/atoms/ButtonBase';
 import HeaderBase from '../component/atoms/HeaderBase';
 import ArrowIcon from "../component/atoms/ArrowIcon";
+import FooterMenu from '../component/atoms/FooterMenu';
 
 function Home() {
   const navigate = useNavigate();
@@ -39,23 +40,11 @@ function Home() {
         </div>
 
         <div className="supplementText">coming soon...</div>
-
-        {/* <div className="iconWrapper">
-          <img className="potIcon" src={images.pot} alt='鍋アイコン'></img>
-          <img className="mixerIcon" src={images.mixer} alt='ミキサーアイコン'></img>
-        </div> */}
       </main>
 
       <footer id="homeFooter">
-        <div id="selectBtn" className="footerMenu">
-          <img className="icon" src={images.book} alt="レシピ本アイコン"></img>
-          <div>レシピ選択</div>
-        </div>
-
-        <div id="shareBtn" className="footerMenu">
-          <img className="icon" src={images.share} alt="共有アイコン"></img>
-          <div>レシピ共有</div>
-        </div>
+        <FooterMenu buttonType="select" />
+        <FooterMenu buttonType="share" />
       </footer>
     </div>
   );
