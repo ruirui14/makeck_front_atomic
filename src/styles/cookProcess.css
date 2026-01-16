@@ -25,7 +25,7 @@
     justify-content: center;            /* 子要素配置 : 水平中央 */
 }
 
-#processCategory {
+#processType {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -34,7 +34,7 @@
     margin-bottom: 2%;
 }
 
-#processCategory div {
+#processType div {
     margin-right: 3%;
 }
 .colorBox {
@@ -43,15 +43,15 @@
     margin-left: 2%;
 }
 
-.yellow {
+#yellow {
     background-color: var(--chart-yellow);
 }
 
-.red {
+#red {
     background-color: var(--chart-red);
 }
 
-.green {
+#green {
     background-color: var(--chart-green);
 }
 
