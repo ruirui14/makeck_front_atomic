@@ -12,6 +12,7 @@ import PageTitle from "../component/atoms/PageTitle";
 import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
+import ProcessItem from "../component/atoms/ProcessItem";
 
 
 function CookProcess() {
@@ -170,18 +171,16 @@ function CookProcess() {
                     marginTop: "0",
                   }}
                 >
+                  {/* TODO: ProcessItemに置き換え */}
                   {/* スタートバーとの間隔確保 */}
-                  <div
+                  <ProcessItem 
                     key={`${element.uid}-start`}
-                    className="girdItem chartLine"
-                    style={{ height: `3%` }}
-                  ></div>
+                    className="chartLine"
+                  />
 
                   {/* 手順 */}
                   {element?.task?.map((t) => {
                     if (t != undefined) {
-                      // 手順カテゴリ名
-                      var _category = "";
                       // クラス指定用
                       var c = "gridItem ";
 
@@ -191,9 +190,8 @@ function CookProcess() {
                         c += `task ${t.type}`;
                       }
 
-                      if (usedTaskIds.has(t.taskId)) {
-                        return null; // すでに処理した `taskId` はスキップ
-                      }
+                      // すでに処理した `taskId` はスキップ
+                      if (usedTaskIds.has(t.taskId)) return null; 
 
                       usedTaskIds.add(t.taskId); // 処理済みとして登録
 
@@ -201,27 +199,20 @@ function CookProcess() {
                       if (t.taskName == "空き時間") {
                         // 棒線
                         return (
-                          <div
+                          <ProcessItem
                             key={t.taskId}
                             className={c}
-                            style={{
-                              height: `${
-                                (t.useTime / chartData.totalTime) * 100
-                              }%`,
-                            }}
-                          ></div>
+                            time={t.useTime / chartData.totalTime}
+                          />
                         );
                       } else {
                         // 手順(重複防止の判定)
                         return (
-                          <div
+                          <ProcessItem
                             key={t.taskId}
                             className={c}
-                            style={{
-                              height: `${
-                                (t.useTime / chartData.totalTime) * 100
-                              }%`,
-                            }}
+                            taskName={t.taskName}
+                            time={t.useTime / chartData.totalTime}
                             onClick={() => {
                               // 詳細画面用デモデータ
                               localStorage.setItem("displayName", t.taskName);
@@ -229,9 +220,7 @@ function CookProcess() {
 
                               navigate(`/stepsDetail/${t.taskId}`);
                             }}
-                          >
-                            {t.taskName}
-                          </div>
+                          />
                         );
                       }
                     } else {
@@ -241,11 +230,10 @@ function CookProcess() {
                   })}
 
                   {/* フッターとの間隔確保 */}
-                  <div
+                  <ProcessItem 
                     key={`${element.uid}-end`}
-                    className="girdItem chartLine"
-                    style={{ height: `50%` }}
-                  ></div>
+                    className="chartLine"
+                  />
                 </div>
               );
             })}
