@@ -1,7 +1,7 @@
 //ボタン内テキスト
 import PropTypes from "prop-types";
 
-function ButtonLabel({className, text, margin}) {
+function ButtonLabel({ text, margin, className }) {
   return (
     <p className={className} style={{ margin }}>
       {text}

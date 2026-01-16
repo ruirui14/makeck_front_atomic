@@ -9,9 +9,10 @@ import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
 import ButtonLabel from "../component/atoms/ButtonLabel";
-
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
+import CategoryButton from "../component/molecules/CategoryButton";
+
 // import Swal from "sweetalert2";
 
 export default function RecipeSelection() {
@@ -43,8 +44,8 @@ export default function RecipeSelection() {
       localStorage.getItem("select_image") || "[]"
     );
 
-    while (selectImages.length < 4) selectImages.push("");  // 空文字で埋める
-    selectImages[now_state] = image || "";                  // 選択中のカテゴリ
+    while (selectImages.length < 4) selectImages.push(""); // 空文字で埋める
+    selectImages[now_state] = image || ""; // 選択中のカテゴリ
     localstroage.setItem("select_image", JSON.stringify(selectImages));
   };
 
@@ -213,10 +214,12 @@ export default function RecipeSelection() {
         </div>
         {/*主食 主菜 副菜 汁物 遷移ボタン*/}
         <div className="wrapButton">
-          <ButtonBase className="seniButton" onClick={() => handleClick(0)}>
-            <ButtonLabel text="主食" margin="1px" />
-          </ButtonBase>
-          <ButtonBase className="seniButton" onClick={() => handleClick(1)}>
+          <CategoryButton text="主食" onClick={() => handleClick(0)} margin="1px"/>
+          <CategoryButton text="主菜" onClick={() => handleClick(1)} margin="1px"/>
+          <CategoryButton text="副菜" onClick={() => handleClick(2)} margin="1px"/>
+          <CategoryButton text="汁物" onClick={() => handleClick(3)} margin="1px"/>
+
+          {/* <ButtonBase className="seniButton" onClick={() => handleClick(1)}>
             <ButtonLabel text="主菜" margin="1px" />
           </ButtonBase>
           <ButtonBase className="seniButton" onClick={() => handleClick(2)}>
@@ -224,7 +227,7 @@ export default function RecipeSelection() {
           </ButtonBase>
           <ButtonBase className="seniButton" onClick={() => handleClick(3)}>
             <ButtonLabel text="汁物" margin="1px" />
-          </ButtonBase>
+          </ButtonBase> */}
         </div>
 
         {/*区切り線*/}
