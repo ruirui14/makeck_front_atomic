@@ -15,6 +15,7 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import ProcessItem from "../component/atoms/ProcessItem";
 import TypeColor from "../component/atoms/TypeColor";
 import ProcessTypeName from "../component/atoms/ProcessTypeName";
+import RecipeNameBubble from "../component/atoms/RecipeNameBubble";
 
 
 function CookProcess() {
@@ -121,16 +122,11 @@ function CookProcess() {
                 console.log("element: ", element)
                 return (
                   <div key={`menuImage-${index}`} className="imageWrapper">
-                    <div
-                      id="speechBubble"
+                    <RecipeNameBubble
                       className={`bubble-${index}`}
-                      style={{
-                        backgroundImage: `url(${images.speechBubble})`,
-                        display: "none",
-                      }}
-                    >
-                      <div id="bubbleText">{chartData?.menu?.[index].name}</div>
-                    </div>
+                      bgImage={images.speechBubble}
+                      recipeName={chartData?.menu?.[index].name}
+                    />
                     {/* 料理画像コンポーネント */}
                     <RecipeImage image={element} page="CookProcess"
                       onclick={() => {
@@ -143,7 +139,6 @@ function CookProcess() {
                           bubble[0].style.display = "none";
                         }, 1000);
                       }}
-                      
                     />
                   </div>
                 );
