@@ -14,6 +14,14 @@ import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import ProcessItem from "../component/atoms/ProcessItem";
 import ButtonLabel from "../component/atoms/ButtonLabel";
+import TypeColor from "../component/atoms/TypeColor";
+import ProcessTypeName from "../component/atoms/ProcessTypeName";
+import RecipeNameBubble from "../component/atoms/RecipeNameBubble";
+import FooterBase from "../component/atoms/FooterBase";
+import HeaderBase from "../component/atoms/HeaderBase";
+import ProcessTypeItem from "../component/molecules/ProcessTypeItem";
+import ProcessType from "../component/molecules/ProcessType";
+
 
 
 function CookProcess() {
@@ -56,7 +64,7 @@ function CookProcess() {
   if (loading) {
       return (
           <div className='App noScroll'>
-              <header>
+              <HeaderBase>
                   {/* 戻るボタン */}
                   <img
                     src={images.backBtn}
@@ -64,7 +72,7 @@ function CookProcess() {
                     className="backBtn"
                     onClick={() => navigate('/MaterialList')} />
                   <div id='pageTitle'>調理手順</div>
-              </header>
+              </HeaderBase>
           </div>
       )
   }
@@ -75,7 +83,7 @@ function CookProcess() {
     console.log(error ? error : chartError)
     return (
         <div className='App noScroll'>
-            <header>
+            <HeaderBase>
                 {/* 戻るボタン */}
                 <img
                   src={images.backBtn}
@@ -84,7 +92,7 @@ function CookProcess() {
                   onClick={() => navigate('/MaterialList')} 
                 />
                 <div id='pageTitle'>調理手順</div>
-            </header>
+            </HeaderBase>
             <main>
               <h2 id='message'>メニューデータの取得中に</h2>
               <h2 id='message'>エラーが発生しました</h2>
@@ -95,7 +103,7 @@ function CookProcess() {
     // 正常時
     return (
       <div className="App noScroll">
-        <header>
+        <HeaderBase>
           {/* 戻るボタン */}
           <ArrowIcon
             direction="left"
@@ -103,19 +111,11 @@ function CookProcess() {
             onClick={() => navigate("/MaterialList")}
           />
           <PageTitle id={"pageTitle"} pageName={"調理手順"}></PageTitle>
-        </header>
+        </HeaderBase>
 
         <main>
           <CookTime time={chartData?.totalTime} />
-
-          <div id="processCategory">
-            <div className="colorBox yellow"></div>
-            <div>下準備</div>
-            <div className="colorBox red"></div>
-            <div>調理</div>
-            <div className="colorBox green"></div>
-            <div>仕上げ</div>
-          </div>
+          <ProcessType />
 
           {/* 献立画像コンテナ */}
           <div id="imagesBorder">
@@ -124,16 +124,11 @@ function CookProcess() {
                 console.log("element: ", element);
                 return (
                   <div key={`menuImage-${index}`} className="imageWrapper">
-                    <div
-                      id="speechBubble"
+                    <RecipeNameBubble
                       className={`bubble-${index}`}
-                      style={{
-                        backgroundImage: `url(${images.speechBubble})`,
-                        display: "none",
-                      }}
-                    >
-                      <div id="bubbleText">{chartData?.menu?.[index].name}</div>
-                    </div>
+                      bgImage={images.speechBubble}
+                      recipeName={chartData?.menu?.[index].name}
+                    />
                     {/* 料理画像コンポーネント */}
                     <RecipeImage
                       image={element}
@@ -262,7 +257,7 @@ function CookProcess() {
           </dialog>
         </main>
 
-        <footer id="decisionFooter">
+        <FooterBase>
           <ButtonBase
             type="button"
             id="decisionBtn"
@@ -270,7 +265,7 @@ function CookProcess() {
           >
             <ButtonLabel text="調理完了" />
           </ButtonBase>
-        </footer>
+        </FooterBase>
       </div>
     );
   }

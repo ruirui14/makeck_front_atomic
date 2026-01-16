@@ -10,7 +10,10 @@ function Home() {
   const navigate = useNavigate();
   return (
     <div className="App noScroll">
-      <HeaderBase />
+      <HeaderBase>
+        <img src={images.icon} id="userIcon" alt="icon" />
+        <div id="appName">MakeCK</div>
+      </HeaderBase>
 
       <main className="">
         <div className="cookingImgwrapper">

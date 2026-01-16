@@ -10,6 +10,8 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
 import ButtonLabel from "../component/atoms/ButtonLabel";
 
+import FooterBase from "../component/atoms/FooterBase";
+import HeaderBase from "../component/atoms/HeaderBase";
 // import Swal from "sweetalert2";
 
 export default function RecipeSelection() {
@@ -188,14 +190,14 @@ export default function RecipeSelection() {
   return (
     <div className="App">
       {/*ヘッダー*/}
-      <header>
+      <HeaderBase>
         <ArrowIcon
           direction="left"
           className="backBtn"
           onClick={() => navigate("/")}
         />
         <div id="pageTitle">{selectedCategory.name}</div>
-      </header>
+      </HeaderBase>
 
       <main>
         {/*検索フォーム*/}
@@ -286,14 +288,14 @@ export default function RecipeSelection() {
       </main>
 
       {/*フッター*/}
-      <footer id="decisionFooter">
+      <FooterBase>
         <ButtonBase
           id="decisionBtn"
           onClick={() => navigate("/menuConfirmation")}
         >
           <ButtonLabel text="献立決定" />
         </ButtonBase>
-      </footer>
+      </FooterBase>
     </div>
   );
 }

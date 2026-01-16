@@ -11,6 +11,8 @@ import HeadingLine from "../component/atoms/HeadingLine";
 import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 import RecipeName from "../component/atoms/RecipeName";
 import ButtonLabel from "../component/atoms/ButtonLabel";
+import FooterBase from "../component/atoms/FooterBase";
+import HeaderBase from "../component/atoms/HeaderBase";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -127,12 +129,12 @@ function MenuConfirmation() {
   if (screen.orientation.angle != 0) {
     return (
       <div className="App">
-        <header>
+        <HeaderBase>
           <div className="backBtn" onClick={() => navigate("/RecipeSelection")}>
             ＜
           </div>
           <div id="pageTitle">{title}</div>
-        </header>
+        </HeaderBase>
         <main>
           <h1 style={{ fontFamily: "KaiseiOpti-Medium" }}>
             画面を縦にしてください
@@ -159,14 +161,14 @@ function MenuConfirmation() {
           <span className="loader"></span>
         </div>
       </div>
-      <header>
+      <HeaderBase>
         <ArrowIcon
           direction="left"
           className="backBtn"
           onClick={() => navigate("/RecipeSelection")}
         />
         <div id="pageTitle">{title}</div>
-      </header>
+      </HeaderBase>
 
       <main>
         {/* <div id='cookingTime'>
@@ -194,7 +196,7 @@ function MenuConfirmation() {
         </div>
       </main>
 
-      <footer id="decisionFooter">
+      <FooterBase>
         <ButtonBase
           type="button"
           id="decisionBtn"
@@ -209,7 +211,7 @@ function MenuConfirmation() {
           <ButtonLabel text="手順書作成" />
           
         </ButtonBase>
-      </footer>
+      </FooterBase>
     </div>
   );
 }
