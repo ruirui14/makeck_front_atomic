@@ -8,6 +8,7 @@ import HeadingLine from "../component/atoms/HeadingLine";
 import DetailTitleBox from '../component/atoms/DetailTitleBox';
 import DetailNumber from '../component/atoms/DetailNumber';
 import SectionLine from "../component/atoms/SectionLine";
+import MaterialItem from "../component/atoms/MaterialItem";
 
 
 // ハリボテデータ
@@ -94,8 +95,14 @@ function StepsDetail() {
                 console.log("material : ", material);
                 return (
                   <SectionLine className="material" key={index}>
-                      <div className="materialName">{material.name}</div>
-                      <div className="quantity">{material.quantity}</div>
+                    <MaterialItem
+                      nameClassName="materialNameP"
+                      quantityClassName="quantity"
+                      name={material.name}
+                      quantity={material.quantity}
+                    />
+                    {/* <div className="materialName">{material.name}</div>
+                    <div className="quantity">{material.quantity}</div> */}
                   </SectionLine>
                 );
               })}
