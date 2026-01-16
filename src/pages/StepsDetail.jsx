@@ -9,6 +9,7 @@ import DetailTitleBox from '../component/atoms/DetailTitleBox';
 import DetailNumber from '../component/atoms/DetailNumber';
 import SectionLine from "../component/atoms/SectionLine";
 import MaterialItem from "../component/atoms/MaterialItem";
+import HeaderBase from '../component/atoms/HeaderBase';
 
 
 // ハリボテデータ
@@ -66,14 +67,14 @@ function StepsDetail() {
     const _detail = data;
     return (
       <div className="App">
-        <header>
+        <HeaderBase>
           <ArrowIcon
             direction="left"
             className="backBtn"
             onClick={() => navigate("/CookProcess")}
           />
           <div id="pageTitle">{title}</div>
-        </header>
+        </HeaderBase>
 
         <main>
           {/* 調理手順番号、料理名 */}

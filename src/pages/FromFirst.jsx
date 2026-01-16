@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import HeaderBase from '../component/atoms/HeaderBase';
 
 function FromFirst() {
     // 画面遷移用フック
@@ -6,10 +7,10 @@ function FromFirst() {
 
     return (
         <div>
-            <header>
+            <HeaderBase>
                 <div className='backBtn' onClick={() => navigate('/')}>＜</div>
                 <div id='pageTitle'>1からレシピ選択</div>
-            </header>
+            </HeaderBase>
             <main></main>
         </div>
     )

@@ -17,6 +17,7 @@ import TypeColor from "../component/atoms/TypeColor";
 import ProcessTypeName from "../component/atoms/ProcessTypeName";
 import RecipeNameBubble from "../component/atoms/RecipeNameBubble";
 import FooterBase from "../component/atoms/FooterBase";
+import HeaderBase from "../component/atoms/HeaderBase";
 
 
 function CookProcess() {
@@ -59,7 +60,7 @@ function CookProcess() {
   if (loading) {
       return (
           <div className='App noScroll'>
-              <header>
+              <HeaderBase>
                   {/* 戻るボタン */}
                   <img
                     src={images.backBtn}
@@ -67,7 +68,7 @@ function CookProcess() {
                     className="backBtn"
                     onClick={() => navigate('/MaterialList')} />
                   <div id='pageTitle'>調理手順</div>
-              </header>
+              </HeaderBase>
           </div>
       )
   }
@@ -78,7 +79,7 @@ function CookProcess() {
     console.log(error ? error : chartError)
     return (
         <div className='App noScroll'>
-            <header>
+            <HeaderBase>
                 {/* 戻るボタン */}
                 <img
                   src={images.backBtn}
@@ -87,7 +88,7 @@ function CookProcess() {
                   onClick={() => navigate('/MaterialList')} 
                 />
                 <div id='pageTitle'>調理手順</div>
-            </header>
+            </HeaderBase>
             <main>
               <h2 id='message'>メニューデータの取得中に</h2>
               <h2 id='message'>エラーが発生しました</h2>
@@ -98,11 +99,11 @@ function CookProcess() {
     // 正常時
     return (
       <div className="App noScroll">
-        <header>
+        <HeaderBase>
           {/* 戻るボタン */}
           <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/MaterialList")} />
           <PageTitle id={"pageTitle"} pageName={"調理手順"}></PageTitle>
-        </header>
+        </HeaderBase>
 
         <main>
           <CookTime time={chartData?.totalTime} />

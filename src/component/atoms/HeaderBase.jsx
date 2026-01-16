@@ -1,7 +1,13 @@
 //ヘッダーの背景
-function HeaderBase() {
+import PropTypes from "prop-types";
+
+HeaderBase.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
+function HeaderBase({ children }) {
   return(
-    <header></header>
+    <header>{children}</header>
   );
 }
 
