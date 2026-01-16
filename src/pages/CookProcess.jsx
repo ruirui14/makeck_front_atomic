@@ -18,6 +18,8 @@ import ProcessTypeName from "../component/atoms/ProcessTypeName";
 import RecipeNameBubble from "../component/atoms/RecipeNameBubble";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
+import ProcessTypeItem from "../component/molecules/ProcessTypeItem";
+import ProcessType from "../component/molecules/ProcessType";
 
 
 function CookProcess() {
@@ -107,15 +109,7 @@ function CookProcess() {
 
         <main>
           <CookTime time={chartData?.totalTime} />
-
-          <div id="processType">
-            <TypeColor color="yellow" />
-            <ProcessTypeName typeName="下準備" />
-            <TypeColor color="red" />
-            <ProcessTypeName typeName="調理" />
-            <TypeColor color="green" />
-            <ProcessTypeName typeName="仕上げ" />
-          </div>
+          <ProcessType />
 
           {/* 献立画像コンテナ */}
           <div id="imagesBorder">
