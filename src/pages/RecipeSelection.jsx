@@ -283,7 +283,7 @@ export default function RecipeSelection() {
         </div>
       </main>
 
-      {/*レシピ選択中モーダル内フッター*/}
+      {/*フッター*/}
       <footer id="decisionFooter">
         <ButtonBase
           id="decisionBtn"

@@ -1,12 +1,12 @@
-import React from 'react';
-import images from '../hooks/images';
+import React from "react";
+import images from "../hooks/images";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
-
+import SelectFrame from "../component/atoms/SelectFrame";
 
 export default function CustomDialog({
   isOpen,
@@ -26,7 +26,7 @@ export default function CustomDialog({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         sx={{
-          left: "0%",   // ダイアログの表示位置のカスタマイズ
+          left: "0%", // ダイアログの表示位置のカスタマイズ
           "& .MuiPaper-root": {
             // ダイアログ全体のスタイルを変更
             backgroundColor: "#F8F5F2",
@@ -41,46 +41,70 @@ export default function CustomDialog({
             {content} {/*選択中レシピ(ダイアログタイトル)*/}
           </DialogContentText>
         </DialogContent>
-       
-          <div className="dialogContainer">
+
+        <div className="dialogContainer">
+          {test_content[0] ? (
             <img
-              src={test_content[0]
-                ? `https://makeck.mattuu.com/recipe/images/${test_content[0]}.jpg`
-                : images.selectStapleFood
-              }
+              src={`https://makeck.mattuu.com/recipe/images/${test_content[0]}.jpg`}
               width={125}
               height={95}
               alt="選択中レシピNO主食"
             />
-            {/* <img src="https://makeck.mattuu.com/images/00e60535e7e545c6a43b3a0baafb9200.jpg" width={125} alt="" /> */}
-            <img
-              src={test_content[1]
-                ? `https://makeck.mattuu.com/recipe/images/${test_content[1]}.jpg`
-                : images.selectMainDish
-              }
+          ) : (
+            <SelectFrame
+              type="StapleFood"
               width={125}
               height={95}
-              alt="選択中レシピNO主菜"
+              alt="選択中レシピNO主食"
             />
+          )}
+          {/* <img src="https://makeck.mattuu.com/images/00e60535e7e545c6a43b3a0baafb9200.jpg" width={125} alt="" /> */}
+          {test_content[1] ? (
             <img
-              src={test_content[2]
-                ? `https://makeck.mattuu.com/recipe/images/${test_content[2]}.jpg`
-                : images.selectSideDish
-              }
+              src={`https://makeck.mattuu.com/recipe/images/${test_content[1]}.jpg`}
+              width={125}
+              height={95}
+              alt="選択中レシピNO主食"
+            />
+          ) : (
+            <SelectFrame
+              type="MainDish"
+              width={125}
+              height={95}
+              alt="選択中レシピNO主食"
+            />
+          )}
+          {test_content[2] ? (
+            <img
+              src={`https://makeck.mattuu.com/recipe/images/${test_content[2]}.jpg`}
               width={125}
               height={95}
               alt="選択中レシピNO副菜"
             />
+          ) : (
+            <SelectFrame
+              type="SideDish"
+              width={125}
+              height={95}
+              alt="選択中レシピNO副菜"
+            />
+          )}
+          {test_content[3] ? (
             <img
-              src={test_content[3]
-                ? `https://makeck.mattuu.com/recipe/images/${test_content[3]}.jpg`
-                : images.selectSoup
-              }
-              width={125} 
+              src={`https://makeck.mattuu.com/recipe/images/${test_content[3]}.jpg`}
+              width={125}
               height={95}
               alt="選択中レシピNO汁物"
             />
-          </div>
+          ) : (
+            <SelectFrame
+              type="Soup"
+              width={125}
+              height={95}
+              alt="選択中レシピNO汁物"
+            />
+          )}
+        </div>
 
         {/* DialogActionsコンポーネントの利用 */}
         <DialogActions>
@@ -94,23 +118,20 @@ export default function CustomDialog({
             sx={{
               fontSize: "20px",
               marginRight: "38%",
-                
-            }}>
+            }}
+          >
             {cancelButtonLabel}
           </Button>
         </DialogActions>
       </Dialog>
-      
     </React.Fragment>
-
-
   );
-}    
+}
 
-  CustomDialog.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    content: PropTypes.func.isRequired,
-    test_content: PropTypes.func.isRequired,
-    cancelButtonLabel: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-  };  
+CustomDialog.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  content: PropTypes.func.isRequired,
+  test_content: PropTypes.func.isRequired,
+  cancelButtonLabel: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
