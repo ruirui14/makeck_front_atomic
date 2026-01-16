@@ -10,6 +10,7 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 import RecipeName from "../component/atoms/RecipeName";
+import FooterBase from "../component/atoms/FooterBase";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -193,7 +194,7 @@ function MenuConfirmation() {
         </div>
       </main>
 
-      <footer id="decisionFooter">
+      <FooterBase>
         <ButtonBase
           type="button"
           id="decisionBtn"
@@ -207,7 +208,7 @@ function MenuConfirmation() {
         >
           手順書作成
         </ButtonBase>
-      </footer>
+      </FooterBase>
     </div>
   );
 }

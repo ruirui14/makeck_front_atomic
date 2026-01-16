@@ -16,6 +16,7 @@ import ProcessItem from "../component/atoms/ProcessItem";
 import TypeColor from "../component/atoms/TypeColor";
 import ProcessTypeName from "../component/atoms/ProcessTypeName";
 import RecipeNameBubble from "../component/atoms/RecipeNameBubble";
+import FooterBase from "../component/atoms/FooterBase";
 
 
 function CookProcess() {
@@ -253,7 +254,7 @@ function CookProcess() {
           </dialog>
         </main>
 
-        <footer id="decisionFooter">
+        <FooterBase>
           <ButtonBase
             type="button"
             id="decisionBtn"
@@ -261,7 +262,7 @@ function CookProcess() {
           >
             {nextPage.title}
           </ButtonBase>
-        </footer>
+        </FooterBase>
       </div>
     );
   }

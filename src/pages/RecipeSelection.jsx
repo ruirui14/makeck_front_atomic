@@ -8,6 +8,7 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
+import FooterBase from "../component/atoms/FooterBase";
 // import Swal from "sweetalert2";
 
 export default function RecipeSelection() {
@@ -284,14 +285,14 @@ export default function RecipeSelection() {
       </main>
 
       {/*フッター*/}
-      <footer id="decisionFooter">
+      <FooterBase>
         <ButtonBase
           id="decisionBtn"
           onClick={() => navigate("/menuConfirmation")}
         >
           献立決定
         </ButtonBase>
-      </footer>
+      </FooterBase>
     </div>
   );
 }
