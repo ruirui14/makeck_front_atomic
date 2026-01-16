@@ -10,6 +10,7 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 import RecipeName from "../component/atoms/RecipeName";
+import ButtonLabel from "../component/atoms/ButtonLabel";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 
@@ -207,7 +208,8 @@ function MenuConfirmation() {
             }, 3000);
           }}
         >
-          手順書作成
+          <ButtonLabel text="手順書作成" />
+          
         </ButtonBase>
       </FooterBase>
     </div>

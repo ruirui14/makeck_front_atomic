@@ -8,6 +8,7 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import SectionLine from "../component/atoms/SectionLine";
+import ButtonLabel from "../component/atoms/ButtonLabel";
 import MaterialItem from "../component/atoms/MaterialItem";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
@@ -231,7 +232,7 @@ export default function MaterialList() {
             id="decisionBtn"
             onClick={() => navigate("/cookProcess")}
           >
-            調理開始！
+            <ButtonLabel text="調理開始！" />
           </ButtonBase>
         </FooterBase>
       </div>

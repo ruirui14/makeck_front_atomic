@@ -4,6 +4,7 @@ import ButtonBase from '../component/atoms/ButtonBase';
 import HeaderBase from '../component/atoms/HeaderBase';
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import FooterMenu from '../component/atoms/FooterMenu';
+import ButtonLabel from "../component/atoms/ButtonLabel";
 
 function Home() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function Home() {
             id="fromFirst"
             onClick={() => navigate("/RecipeSelection")}
           >
-            <p className="btnText">1からレシピ選択</p>
+            <ButtonLabel className="btnText" text="1からレシピ選択" />
             <ArrowIcon direction="right" className="arrow" />
           </ButtonBase>
 
@@ -37,7 +38,7 @@ function Home() {
             id="fromRegistered"
             onClick={() => navigate("/menuConfirmation")}
           >
-            <p className="btnText">登録レシピから選択</p>
+            <ButtonLabel className="btnText" text="登録レシピから選択" />
             <ArrowIcon direction="right" className="arrow" />
           </ButtonBase>
         </div>

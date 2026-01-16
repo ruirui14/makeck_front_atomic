@@ -8,6 +8,8 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
+import ButtonLabel from "../component/atoms/ButtonLabel";
+
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 // import Swal from "sweetalert2";
@@ -212,21 +214,21 @@ export default function RecipeSelection() {
         {/*主食 主菜 副菜 汁物 遷移ボタン*/}
         <div className="wrapButton">
           <ButtonBase className="seniButton" onClick={() => handleClick(0)}>
-            主食
+            <ButtonLabel text="主食" margin="1px" />
           </ButtonBase>
           <ButtonBase className="seniButton" onClick={() => handleClick(1)}>
-            主菜
+            <ButtonLabel text="主菜" margin="1px" />
           </ButtonBase>
           <ButtonBase className="seniButton" onClick={() => handleClick(2)}>
-            副菜
+            <ButtonLabel text="副菜" margin="1px" />
           </ButtonBase>
           <ButtonBase className="seniButton" onClick={() => handleClick(3)}>
-            汁物
+            <ButtonLabel text="汁物" margin="1px" />
           </ButtonBase>
         </div>
-        
+
         {/*区切り線*/}
-        <SectionLine className="line"/>
+        <SectionLine className="line" />
 
         {/*説明文*/}
         <div className="explanation">
@@ -291,7 +293,7 @@ export default function RecipeSelection() {
           id="decisionBtn"
           onClick={() => navigate("/menuConfirmation")}
         >
-          献立決定
+          <ButtonLabel text="献立決定" />
         </ButtonBase>
       </FooterBase>
     </div>
