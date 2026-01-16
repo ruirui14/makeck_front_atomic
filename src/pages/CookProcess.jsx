@@ -13,6 +13,8 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import ProcessItem from "../component/atoms/ProcessItem";
+import TypeColor from "../component/atoms/TypeColor";
+import ProcessTypeName from "../component/atoms/ProcessTypeName";
 
 
 function CookProcess() {
@@ -103,13 +105,13 @@ function CookProcess() {
         <main>
           <CookTime time={chartData?.totalTime} />
 
-          <div id="processCategory">
-            <div className="colorBox yellow"></div>
-            <div>下準備</div>
-            <div className="colorBox red"></div>
-            <div>調理</div>
-            <div className="colorBox green"></div>
-            <div>仕上げ</div>
+          <div id="processType">
+            <TypeColor color="yellow" />
+            <ProcessTypeName typeName="下準備" />
+            <TypeColor color="red" />
+            <ProcessTypeName typeName="調理" />
+            <TypeColor color="green" />
+            <ProcessTypeName typeName="仕上げ" />
           </div>
 
           {/* 献立画像コンテナ */}
