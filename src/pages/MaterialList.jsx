@@ -8,6 +8,7 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import SectionLine from "../component/atoms/SectionLine";
+import ButtonLabel from "../component/atoms/ButtonLabel";
 
 export default function MaterialList() {
   console.log("選択中のレシピIDリスト:");
@@ -211,15 +212,15 @@ export default function MaterialList() {
                     {item.materials.map((line, index) => (
                       //セクションライン
                       <SectionLine className="material" key={index}>
-                          <div className="materialNameP"> {line.name} </div>
-                          <div className="quantityM">
-                            {line.quantity || ""}
-                            {line.unit || ""}
-                          </div>
-                          {/*{line}: 現在のインデックス番号を取得*/}
-                          {/* {console.log(line.name)} */}
-                          {/* {line} {item.number?.[index] || ""} {item.unit?.[index] || ""} */}
-                          {/* 各行を段落として表示 */}
+                        <div className="materialNameP"> {line.name} </div>
+                        <div className="quantityM">
+                          {line.quantity || ""}
+                          {line.unit || ""}
+                        </div>
+                        {/*{line}: 現在のインデックス番号を取得*/}
+                        {/* {console.log(line.name)} */}
+                        {/* {line} {item.number?.[index] || ""} {item.unit?.[index] || ""} */}
+                        {/* 各行を段落として表示 */}
                       </SectionLine>
                     ))}
                   </div>
@@ -236,7 +237,7 @@ export default function MaterialList() {
             id="decisionBtn"
             onClick={() => navigate("/cookProcess")}
           >
-            調理開始！
+            <ButtonLabel text="調理開始！" />
           </ButtonBase>
         </footer>
       </div>

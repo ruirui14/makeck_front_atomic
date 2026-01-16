@@ -10,6 +10,7 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 import RecipeName from "../component/atoms/RecipeName";
+import ButtonLabel from "../component/atoms/ButtonLabel";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -205,7 +206,8 @@ function MenuConfirmation() {
             }, 3000);
           }}
         >
-          手順書作成
+          <ButtonLabel text="手順書作成" />
+          
         </ButtonBase>
       </footer>
     </div>

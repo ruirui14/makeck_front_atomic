@@ -13,6 +13,7 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import ProcessItem from "../component/atoms/ProcessItem";
+import ButtonLabel from "../component/atoms/ButtonLabel";
 
 
 function CookProcess() {
@@ -96,7 +97,11 @@ function CookProcess() {
       <div className="App noScroll">
         <header>
           {/* 戻るボタン */}
-          <ArrowIcon direction="left" className="backBtn" onClick={() => navigate("/MaterialList")} />
+          <ArrowIcon
+            direction="left"
+            className="backBtn"
+            onClick={() => navigate("/MaterialList")}
+          />
           <PageTitle id={"pageTitle"} pageName={"調理手順"}></PageTitle>
         </header>
 
@@ -116,7 +121,7 @@ function CookProcess() {
           <div id="imagesBorder">
             <div id="imageContainer" className="grid">
               {selectImage.map((element, index) => {
-                console.log("element: ", element)
+                console.log("element: ", element);
                 return (
                   <div key={`menuImage-${index}`} className="imageWrapper">
                     <div
@@ -130,7 +135,9 @@ function CookProcess() {
                       <div id="bubbleText">{chartData?.menu?.[index].name}</div>
                     </div>
                     {/* 料理画像コンポーネント */}
-                    <RecipeImage image={element} page="CookProcess"
+                    <RecipeImage
+                      image={element}
+                      page="CookProcess"
                       onclick={() => {
                         var bubble = document.getElementsByClassName(
                           `bubble-${index}`
@@ -141,7 +148,6 @@ function CookProcess() {
                           bubble[0].style.display = "none";
                         }, 1000);
                       }}
-                      
                     />
                   </div>
                 );
@@ -173,7 +179,7 @@ function CookProcess() {
                 >
                   {/* TODO: ProcessItemに置き換え */}
                   {/* スタートバーとの間隔確保 */}
-                  <ProcessItem 
+                  <ProcessItem
                     key={`${element.uid}-start`}
                     className="chartLine"
                   />
@@ -191,7 +197,7 @@ function CookProcess() {
                       }
 
                       // すでに処理した `taskId` はスキップ
-                      if (usedTaskIds.has(t.taskId)) return null; 
+                      if (usedTaskIds.has(t.taskId)) return null;
 
                       usedTaskIds.add(t.taskId); // 処理済みとして登録
 
@@ -230,7 +236,7 @@ function CookProcess() {
                   })}
 
                   {/* フッターとの間隔確保 */}
-                  <ProcessItem 
+                  <ProcessItem
                     key={`${element.uid}-end`}
                     className="chartLine"
                   />
@@ -247,7 +253,7 @@ function CookProcess() {
             }}
           >
             <div id="dialogContainer">
-              <div id="dialogLine">
+              <div id="dialogLine">     
                 <div id="dialogTitle">調理完了</div>
                 <div id="dialogText">お疲れさまでした！</div>
               </div>
@@ -262,7 +268,7 @@ function CookProcess() {
             id="decisionBtn"
             onClick={() => dialogRef.current.showModal()}
           >
-            {nextPage.title}
+            <ButtonLabel text="調理完了" />
           </ButtonBase>
         </footer>
       </div>
