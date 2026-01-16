@@ -8,6 +8,7 @@ import ButtonBase from "../component/atoms/ButtonBase";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import SectionLine from "../component/atoms/SectionLine";
+import MaterialItem from "../component/atoms/MaterialItem";
 
 export default function MaterialList() {
   console.log("選択中のレシピIDリスト:");
@@ -196,30 +197,22 @@ export default function MaterialList() {
                     {/* 表示、非表示を切り替えるボタン */}
                     <span>
                       {selected === i ? (
-                        // <img src={images.closeButton} />
                         <ArrowIcon direction="top" />
                       ) : (
-                        // <img src={images.openButton} />
                         <ArrowIcon direction="down" />
                       )}
                     </span>
                   </HeadingLine>
                   <div className={selected === i ? "content show" : "content"}>
-                    {/* {item.number.map((num,index) => (
-                                <p key={index}>{num}</p>
-                            ))} */}
                     {item.materials.map((line, index) => (
-                      //セクションライン
                       <SectionLine className="material" key={index}>
-                          <div className="materialNameP"> {line.name} </div>
-                          <div className="quantityM">
-                            {line.quantity || ""}
-                            {line.unit || ""}
-                          </div>
-                          {/*{line}: 現在のインデックス番号を取得*/}
-                          {/* {console.log(line.name)} */}
-                          {/* {line} {item.number?.[index] || ""} {item.unit?.[index] || ""} */}
-                          {/* 各行を段落として表示 */}
+                        <MaterialItem
+                          nameClassName="materialNameP"
+                          quantityClassName="quantityM"
+                          name={line.name}
+                          quantity={line.quantity}
+                          unit={line.unit}
+                        />
                       </SectionLine>
                     ))}
                   </div>
