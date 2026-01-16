@@ -218,16 +218,6 @@ export default function RecipeSelection() {
           <CategoryButton text="主菜" onClick={() => handleClick(1)} margin="1px"/>
           <CategoryButton text="副菜" onClick={() => handleClick(2)} margin="1px"/>
           <CategoryButton text="汁物" onClick={() => handleClick(3)} margin="1px"/>
-
-          {/* <ButtonBase className="seniButton" onClick={() => handleClick(1)}>
-            <ButtonLabel text="主菜" margin="1px" />
-          </ButtonBase>
-          <ButtonBase className="seniButton" onClick={() => handleClick(2)}>
-            <ButtonLabel text="副菜" margin="1px" />
-          </ButtonBase>
-          <ButtonBase className="seniButton" onClick={() => handleClick(3)}>
-            <ButtonLabel text="汁物" margin="1px" />
-          </ButtonBase> */}
         </div>
 
         {/*区切り線*/}
