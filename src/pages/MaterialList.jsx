@@ -9,6 +9,7 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import SectionLine from "../component/atoms/SectionLine";
 import MaterialItem from "../component/atoms/MaterialItem";
+import FooterBase from "../component/atoms/FooterBase";
 
 export default function MaterialList() {
   console.log("選択中のレシピIDリスト:");
@@ -223,7 +224,7 @@ export default function MaterialList() {
         </main>
 
         {/*フッター*/}
-        <footer id="decisionFooter">
+        <FooterBase>
           <ButtonBase
             type="button"
             id="decisionBtn"
@@ -231,7 +232,7 @@ export default function MaterialList() {
           >
             調理開始！
           </ButtonBase>
-        </footer>
+        </FooterBase>
       </div>
     );
 
