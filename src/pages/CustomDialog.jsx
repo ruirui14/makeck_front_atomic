@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
-import SelectRecipie from "../component/molecules/SelectRecipie";
+import SelectRecipieList from "../component/molecules/SelectRecipieList";
 
 export default function CustomDialog({
   isOpen,
@@ -41,37 +41,9 @@ export default function CustomDialog({
           </DialogContentText>
         </DialogContent>
 
-        <div className="dialogContainer">
-          <SelectRecipie
-            recipeId={test_content[0]}
-            type="StapleFood"
-            width={125}
-            height={95}
-            alt="主食"
-          />
-          <SelectRecipie
-            recipeId={test_content[1]}
-            type="MainDish"
-            width={125}
-            height={95}
-            alt="主菜"
-          />
-          <SelectRecipie
-            recipeId={test_content[2]}
-            type="SideDish"
-            width={125}
-            height={95}
-            alt="副菜"
-          />
-          <SelectRecipie
-            recipeId={test_content[3]}
-            type="Soup"
-            width={125}
-            height={95}
-            alt="汁物"
-          />
-        </div>
-
+        {/*料理画像コンポーネント*/}
+        <SelectRecipieList recipes={test_content}/>
+       
         {/* DialogActionsコンポーネントの利用 */}
         <DialogActions>
           {/* Buttonコンポーネントの利用 */}

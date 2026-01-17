@@ -4,8 +4,6 @@ import images from "../hooks/images";
 import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
-import RecipeImage from "../component/atoms/RecipeImage";
-import RecipeName from "../component/atoms/RecipeName";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
 import FooterBase from "../component/atoms/FooterBase";
