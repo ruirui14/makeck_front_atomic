@@ -12,6 +12,7 @@ import ButtonLabel from "../component/atoms/ButtonLabel";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 import CategoryButton from "../component/molecules/CategoryButton";
+import CategoryButtonList from "../component/molecules/CategoryButtonList";
 
 // import Swal from "sweetalert2";
 
@@ -214,10 +215,7 @@ export default function RecipeSelection() {
         </div>
         {/*主食 主菜 副菜 汁物 遷移ボタン*/}
         <div className="wrapButton">
-          <CategoryButton text="主食" onClick={() => handleClick(0)} margin="1px"/>
-          <CategoryButton text="主菜" onClick={() => handleClick(1)} margin="1px"/>
-          <CategoryButton text="副菜" onClick={() => handleClick(2)} margin="1px"/>
-          <CategoryButton text="汁物" onClick={() => handleClick(3)} margin="1px"/>
+          <CategoryButtonList onSelect={handleClick}/>
         </div>
 
         {/*区切り線*/}
