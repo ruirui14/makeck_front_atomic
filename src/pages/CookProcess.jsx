@@ -19,8 +19,8 @@ import ProcessTypeName from "../component/atoms/ProcessTypeName";
 import RecipeNameBubble from "../component/atoms/RecipeNameBubble";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
-import ProcessTypeItem from "../component/molecules/ProcessTypeItem";
 import ProcessType from "../component/molecules/ProcessType";
+import ProcessChart from "../component/molecules/ProcessChart";
 
 
 
@@ -28,6 +28,7 @@ function CookProcess() {
   var recipe_ids = JSON.parse(localStorage.getItem("select_key"));
   const navigate = useNavigate(); // 遷移用インスタンス
   const dialogRef = useRef(null); // ダイアログ描画
+  
 
   // メニューデータ取得 (4品分献立、カテゴリー*3)
   const { data, loading, error } = useMenuData(
@@ -156,88 +157,21 @@ function CookProcess() {
           <div id="startBar">スタート！</div>
           <div id="chartContainer" className="grid">
             {chartData?.menu?.map((element, index) => {
-              let usedTaskIds = new Set();
               console.log(`--- ${index + 1}品目 ---`);
-
+              
               return (
-                // 1品分のチャート
-                <div
-                  key={element.uid}
-                  className="chartWrapper"
-                  style={{
-                    gridTemplateRows: `repeat(${chartData?.totalTime}, 1fr)`,
-                    height: "95%",
-                    width: "80%",
-                    margin: "auto",
-                    marginTop: "0",
-                  }}
-                >
-                  {/* TODO: ProcessItemに置き換え */}
-                  {/* スタートバーとの間隔確保 */}
-                  <ProcessItem
-                    key={`${element.uid}-start`}
-                    className="chartLine"
-                  />
-
-                  {/* 手順 */}
-                  {element?.task?.map((t) => {
-                    if (t != undefined) {
-                      // クラス指定用
-                      var c = "gridItem ";
-
-                      if (t.type == undefined) {
-                        c += "chartLine";
-                      } else {
-                        c += `task ${t.type}`;
-                      }
-
-                      // すでに処理した `taskId` はスキップ
-                      if (usedTaskIds.has(t.taskId)) return null;
-
-                      usedTaskIds.add(t.taskId); // 処理済みとして登録
-
-                      // 各手順に遷移先設定
-                      if (t.taskName == "空き時間") {
-                        // 棒線
-                        return (
-                          <ProcessItem
-                            key={t.taskId}
-                            className={c}
-                            time={t.useTime / chartData.totalTime}
-                          />
-                        );
-                      } else {
-                        // 手順(重複防止の判定)
-                        return (
-                          <ProcessItem
-                            key={t.taskId}
-                            className={c}
-                            taskName={t.taskName}
-                            time={t.useTime / chartData.totalTime}
-                            onClick={() => {
-                              // 詳細画面用デモデータ
-                              localStorage.setItem("displayName", t.taskName);
-                              localStorage.setItem("recipieName", element.name);
-
-                              navigate(`/stepsDetail/${t.taskId}`);
-                            }}
-                          />
-                        );
-                      }
-                    } else {
-                      // エラー防止用にnullを返す
-                      return null;
-                    }
-                  })}
-
-                  {/* フッターとの間隔確保 */}
-                  <ProcessItem
-                    key={`${element.uid}-end`}
-                    className="chartLine"
-                  />
-                </div>
+                /**
+                 * key:       map処理に必須のため設定
+                 * recipe:    チャート生成用レシピ情報(1品分)
+                 * totalTime: 手順サイズ設定/合計時間表示用 全体合計時間
+                 */
+                <ProcessChart 
+                  key={`chart${index}`} recipe={element} 
+                  totalTime={chartData.totalTime}
+                />
               );
             })}
+
           </div>
           <dialog
             id="cookFinDialog"
