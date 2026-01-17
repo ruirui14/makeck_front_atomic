@@ -5,13 +5,14 @@ import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
 import RecipeImage from "../component/atoms/RecipeImage";
+import RecipeName from "../component/atoms/RecipeName";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
-import CategoryButton from "../component/molecules/CategoryButton";
 import CategoryButtonList from "../component/molecules/CategoryButtonList";
 import FooterButton from "../component/molecules/FooterButton";
+import ConfirmeRecipie from "../component/molecules/ConfirmeRecipie";
 
 // import Swal from "sweetalert2";
 
@@ -214,7 +215,7 @@ export default function RecipeSelection() {
         </div>
         {/*主食 主菜 副菜 汁物 遷移ボタン*/}
         <div className="wrapButton">
-          <CategoryButtonList onSelect={handleClick}/>
+          <CategoryButtonList onSelect={handleClick} />
         </div>
 
         {/*区切り線*/}
@@ -235,17 +236,13 @@ export default function RecipeSelection() {
                 key={index}
                 onClick={() => selectRecipeIdChanger(menu.id, menu.image)}
               >
-                <div
-                  className="menuR"
+                <ConfirmeRecipie
+                  key={menu.key}
+                  image={menu.image}
+                  name={menu.name}
+                  isSelected={isSelected}
                   onClick={() => selectRecipeIdChanger(menu.id, menu.image)}
-                >
-                  <div className="imageWrapper">
-                    <RecipeImage image={menu.image} page="RecipeSelection" />
-                    {/*選択中囲み*/}
-                    {isSelected && <div className="overlay">選択中</div>}
-                  </div>
-                  <div className="menuName">{menu.name}</div>
-                </div>
+                />
               </div>
             );
           })}
