@@ -12,6 +12,7 @@ import ButtonLabel from "../component/atoms/ButtonLabel";
 import MaterialItem from "../component/atoms/MaterialItem";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
+import FooterButton from "../component/molecules/FooterButton";
 
 export default function MaterialList() {
   console.log("選択中のレシピIDリスト:");
@@ -227,13 +228,10 @@ export default function MaterialList() {
 
         {/*フッター*/}
         <FooterBase>
-          <ButtonBase
-            type="button"
-            id="decisionBtn"
+          <FooterButton
+            label="調理開始！"
             onClick={() => navigate("/cookProcess")}
-          >
-            <ButtonLabel text="調理開始！" />
-          </ButtonBase>
+          />
         </FooterBase>
       </div>
     );

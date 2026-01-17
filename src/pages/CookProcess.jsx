@@ -21,6 +21,7 @@ import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 import ProcessType from "../component/molecules/ProcessType";
 import ProcessChart from "../component/molecules/ProcessChart";
+import FooterButton from "../component/molecules/FooterButton";
 
 
 
@@ -192,13 +193,10 @@ function CookProcess() {
         </main>
 
         <FooterBase>
-          <ButtonBase
-            type="button"
-            id="decisionBtn"
-            onClick={() => dialogRef.current.showModal()}
-          >
-            <ButtonLabel text="調理完了" />
-          </ButtonBase>
+          <FooterButton
+            label="調理完了"
+            onClick={() => dialogRef.current.showModal()} 
+          />
         </FooterBase>
       </div>
     );

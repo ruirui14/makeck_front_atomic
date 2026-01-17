@@ -13,6 +13,7 @@ import RecipeName from "../component/atoms/RecipeName";
 import ButtonLabel from "../component/atoms/ButtonLabel";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
+import FooterButton from "../component/molecules/FooterButton";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -197,9 +198,8 @@ function MenuConfirmation() {
       </main>
 
       <FooterBase>
-        <ButtonBase
-          type="button"
-          id="decisionBtn"
+        <FooterButton
+          label="手順書作成"
           onClick={() => {
             // loadscreen 出す
             document.querySelector(".loader_screen").style.display = "flex";
@@ -207,10 +207,7 @@ function MenuConfirmation() {
               navigate("/MaterialList");
             }, 3000);
           }}
-        >
-          <ButtonLabel text="手順書作成" />
-          
-        </ButtonBase>
+        />
       </FooterBase>
     </div>
   );
