@@ -47,28 +47,28 @@ export default function CustomDialog({
             type="StapleFood"
             width={125}
             height={95}
-            alt="選択中レシピNO主食"
+            alt="主食"
           />
           <SelectRecipie
             recipeId={test_content[1]}
             type="MainDish"
             width={125}
             height={95}
-            alt="選択中レシピNO主食"
+            alt="主菜"
           />
           <SelectRecipie
             recipeId={test_content[2]}
             type="SideDish"
             width={125}
             height={95}
-            alt="選択中レシピNO副菜"
+            alt="副菜"
           />
           <SelectRecipie
             recipeId={test_content[3]}
             type="Soup"
             width={125}
             height={95}
-            alt="選択中レシピNO汁物"
+            alt="汁物"
           />
         </div>
 
