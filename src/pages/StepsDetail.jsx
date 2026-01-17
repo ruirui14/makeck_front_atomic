@@ -3,7 +3,6 @@ import useMenuData from '../hooks/useMenuData';         // チャート用デー
 import DetailDescBase from '../component/atoms/DetailDescBase';
 import DetailDescText from '../component/atoms/DetailDescText';
 import ArrowIcon from "../component/atoms/ArrowIcon";
-import images from "../hooks/images";
 import HeadingLine from "../component/atoms/HeadingLine";
 import DetailTitleBox from '../component/atoms/DetailTitleBox';
 import DetailNumber from '../component/atoms/DetailNumber';

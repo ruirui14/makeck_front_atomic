@@ -1,16 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../loader.css";
-import useMenuData from "../hooks/useMenuData"; // チャート用データ取得
+// import useMenuData from "../hooks/useMenuData"; // チャート用データ取得
 import _Marquee from "react-fast-marquee"; // 文字スライド用
 import images from "../hooks/images";
-import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 import RecipeName from "../component/atoms/RecipeName";
-import ButtonLabel from "../component/atoms/ButtonLabel";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 import FooterButton from "../component/molecules/FooterButton";
