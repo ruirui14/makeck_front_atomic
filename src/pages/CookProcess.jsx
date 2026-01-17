@@ -17,6 +17,7 @@ import HeaderBase from "../component/atoms/HeaderBase";
 import ProcessType from "../component/molecules/ProcessType";
 import ProcessChart from "../component/molecules/ProcessChart";
 import FooterButton from "../component/molecules/FooterButton";
+import ProcessChartSection from "../component/organisms/ProcessChartSection";
 
 
 
@@ -148,27 +149,9 @@ function CookProcess() {
           </div>
 
           {/* ガントチャートコンテナ */}
+          <ProcessChartSection chartData={chartData} />
 
-          {/* <div id='startBar' onClick={()=>resetTranscript()}>スタート！</div> */}
-          <div id="startBar">スタート！</div>
-          <div id="chartContainer" className="grid">
-            {chartData?.menu?.map((element, index) => {
-              console.log(`--- ${index + 1}品目 ---`);
-              
-              return (
-                /**
-                 * key:       map処理に必須のため設定
-                 * recipe:    チャート生成用レシピ情報(1品分)
-                 * totalTime: 手順サイズ設定/合計時間表示用 全体合計時間
-                 */
-                <ProcessChart 
-                  key={`chart${index}`} recipe={element} 
-                  totalTime={chartData.totalTime}
-                />
-              );
-            })}
-
-          </div>
+          {/* 調理完了ダイアログ */}
           <dialog
             id="cookFinDialog"
             ref={dialogRef}
