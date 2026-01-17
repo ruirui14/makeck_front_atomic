@@ -8,7 +8,7 @@ function ArrowIcon({ direction = "right", alt = "矢印", className, onClick }) 
     top: images.closeButton,
     down: images.openButton,
   };
-  return <img className={className} src={arrowMap[direction]} onClick={onClick}/>;
+  return <img className={className} src={arrowMap[direction]} onClick={onClick} alt={alt} />;
 }
 
 ArrowIcon.propTypes = {

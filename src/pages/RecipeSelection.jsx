@@ -4,15 +4,14 @@ import images from "../hooks/images";
 import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
-import ButtonBase from "../component/atoms/ButtonBase";
 import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
-import ButtonLabel from "../component/atoms/ButtonLabel";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 import CategoryButton from "../component/molecules/CategoryButton";
 import CategoryButtonList from "../component/molecules/CategoryButtonList";
+import FooterButton from "../component/molecules/FooterButton";
 
 // import Swal from "sweetalert2";
 
@@ -280,12 +279,10 @@ export default function RecipeSelection() {
 
       {/*フッター*/}
       <FooterBase>
-        <ButtonBase
-          id="decisionBtn"
+        <FooterButton
+          label="献立決定"
           onClick={() => navigate("/menuConfirmation")}
-        >
-          <ButtonLabel text="献立決定" />
-        </ButtonBase>
+        />
       </FooterBase>
     </div>
   );

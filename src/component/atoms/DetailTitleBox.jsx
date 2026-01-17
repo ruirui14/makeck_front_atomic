@@ -1,11 +1,11 @@
 //手順詳細画面 料理タイトルの囲い
 import PropTypes from "prop-types";
 
-DetailTitleBox.propTypes = {
-  children: PropTypes.node,
-  recipeName: PropTypes.string,
-};
-
+/**
+ * 手順詳細画面の画面見出し
+ * @param {node}    children    子要素(手順番号)
+ * @param {string}  recipeName  料理名
+ */
 function DetailTitleBox({children, recipeName}) {
   return(
     <div id="stepTitle">
@@ -14,5 +14,10 @@ function DetailTitleBox({children, recipeName}) {
     </div>
   );
 }
+
+DetailTitleBox.propTypes = {
+  children: PropTypes.node,
+  recipeName: PropTypes.string,
+};
 
 export default DetailTitleBox;

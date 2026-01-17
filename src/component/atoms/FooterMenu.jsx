@@ -2,10 +2,6 @@
 import PropTypes from "prop-types";
 import images from "../../hooks/images";
 
-FooterMenu.propTypes = {
-  buttonType: PropTypes.oneOf(["select", "share"]),
-}
-
 const menuConfig = {
   "select": {id: "selectBtn", url: images.book, alt: "レシピ本アイコン", label: "レシピ選択"},
   "share": {id: "shareBtn", url: images.share, alt: "共有アイコン", label: "レシピ共有"}
@@ -21,6 +17,10 @@ function FooterMenu({ buttonType }) {
       <div>{menuType.label}</div>
     </div>
   );
+}
+
+FooterMenu.propTypes = {
+  buttonType: PropTypes.oneOf(["select", "share"]),
 }
 
 export default FooterMenu;
