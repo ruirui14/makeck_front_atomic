@@ -1,10 +1,6 @@
 //ガントチャート プロセス識別用カラーボックス
 import PropTypes from "prop-types";
 
-TypeColor.propTypes = {
-  color: PropTypes.string
-}
-
 /**
  * 手順タイプ色見本
  * @param {string} color  タイプ判別色(下準備: yellow, 調理: red, 仕上げ: green) 
@@ -14,6 +10,10 @@ function TypeColor({ color }) {
   return(
     <div id={color} className="colorBox" />
   );
+}
+
+TypeColor.propTypes = {
+  color: PropTypes.string
 }
 
 export default TypeColor;

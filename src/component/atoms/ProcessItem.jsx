@@ -1,14 +1,6 @@
 //ガントチャートのブロック
 import PropTypes from "prop-types";
 
-ProcessItem.propTypes = {
-  key: PropTypes.string,
-  className: PropTypes.string,
-  taskName: PropTypes.string,
-  time: PropTypes.number,
-  onClick: PropTypes.func,
-}
-
 /**
  * ガントチャート内要素
  * @param {string}  key
@@ -27,6 +19,14 @@ function ProcessItem({ key, className, taskName, time, onClick }) {
       onClick={onClick}
     >{taskName}</div>
   );
+}
+
+ProcessItem.propTypes = {
+  key: PropTypes.string,
+  className: PropTypes.string,
+  taskName: PropTypes.string,
+  time: PropTypes.number,
+  onClick: PropTypes.func,
 }
 
 export default ProcessItem;

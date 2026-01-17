@@ -3,12 +3,8 @@ import PropTypes from "prop-types";
 import TypeColor from "../atoms/TypeColor";
 import ProcessTypeName from "../atoms/ProcessTypeName";
 
-ProcessTypeItem.propTypes = {
-    pType: PropTypes.oneOf(["prepare", "cook", "finish"]),
-}
-
 /**
- * 各タイプの情報
+ * 各調理タイプの情報
  */
 const typeInfo = {
     prepare: {color: "yellow", name: "下準備"},
@@ -29,6 +25,10 @@ function ProcessTypeItem({ pType }) {
             <ProcessTypeName typeName={ type.name } />
         </>
     );
+}
+
+ProcessTypeItem.propTypes = {
+    pType: PropTypes.oneOf(["prepare", "cook", "finish"]),
 }
 
 export default ProcessTypeItem;

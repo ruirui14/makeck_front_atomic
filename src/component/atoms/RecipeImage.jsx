@@ -1,12 +1,12 @@
 //レシピ画像
 import PropTypes from "prop-types";
 
-RecipeImage.propTypes = {
-  image: PropTypes.string,                    // 料理画像パス
-  page: PropTypes.string,                     // 使用ページ
-  onclick: PropTypes.func,                    // クリック時処理(必須ではない)
-}
-
+/**
+ * 
+ * @param {string}  image   画像パス
+ * @param {string}  page    呼び出し元ページ
+ * @param {func}    onclick 押下時処理
+ */
 function RecipeImage({ image, page, onclick }) {
   // スタイル設定(使用ページ: クラス名)
   const className = {
@@ -23,6 +23,12 @@ function RecipeImage({ image, page, onclick }) {
       onClick={onclick? onclick : undefined}
     />
   );
+}
+
+RecipeImage.propTypes = {
+  image: PropTypes.string,
+  page: PropTypes.string,
+  onclick: PropTypes.func
 }
 
 export default RecipeImage;

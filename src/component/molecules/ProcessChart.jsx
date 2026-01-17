@@ -3,11 +3,6 @@ import PropTypes from "prop-types";
 import ProcessItem from "../atoms/ProcessItem";
 import { useNavigate } from "react-router-dom";
 
-ProcessChart.propTypes = {
-    recipe: PropTypes.object,
-    totalTime: PropTypes.number
-}
-
 /**
  * 与えられたレシピに合わせた1列のガントチャートを生成
  * @param {string}  recipe      レシピ識別ID 
@@ -86,6 +81,11 @@ function ProcessChart({ recipe, totalTime }) {
 
         </div>
     );
+}
+
+ProcessChart.propTypes = {
+    recipe: PropTypes.object,
+    totalTime: PropTypes.number
 }
 
 export default ProcessChart;
