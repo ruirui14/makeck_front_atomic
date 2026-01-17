@@ -12,6 +12,7 @@ import ButtonLabel from "../component/atoms/ButtonLabel";
 import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 import CategoryButton from "../component/molecules/CategoryButton";
+import FooterButton from "../component/molecules/FooterButton";
 
 // import Swal from "sweetalert2";
 
@@ -282,12 +283,10 @@ export default function RecipeSelection() {
 
       {/*フッター*/}
       <FooterBase>
-        <ButtonBase
-          id="decisionBtn"
+        <FooterButton
+          label="献立決定"
           onClick={() => navigate("/menuConfirmation")}
-        >
-          <ButtonLabel text="献立決定" />
-        </ButtonBase>
+        />
       </FooterBase>
     </div>
   );
