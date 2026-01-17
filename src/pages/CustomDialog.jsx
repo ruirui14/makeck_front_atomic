@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
-import SelectFrame from "../component/atoms/SelectFrame";
+import SelectRecipie from "../component/molecules/SelectRecipie";
 
 export default function CustomDialog({
   isOpen,
@@ -42,67 +42,34 @@ export default function CustomDialog({
         </DialogContent>
 
         <div className="dialogContainer">
-          {test_content[0] ? (
-            <img
-              src={`https://makeck.mattuu.com/recipe/images/${test_content[0]}.jpg`}
-              width={125}
-              height={95}
-              alt="選択中レシピNO主食"
-            />
-          ) : (
-            <SelectFrame
-              type="StapleFood"
-              width={125}
-              height={95}
-              alt="選択中レシピNO主食"
-            />
-          )}
-          {/* <img src="https://makeck.mattuu.com/images/00e60535e7e545c6a43b3a0baafb9200.jpg" width={125} alt="" /> */}
-          {test_content[1] ? (
-            <img
-              src={`https://makeck.mattuu.com/recipe/images/${test_content[1]}.jpg`}
-              width={125}
-              height={95}
-              alt="選択中レシピNO主食"
-            />
-          ) : (
-            <SelectFrame
-              type="MainDish"
-              width={125}
-              height={95}
-              alt="選択中レシピNO主食"
-            />
-          )}
-          {test_content[2] ? (
-            <img
-              src={`https://makeck.mattuu.com/recipe/images/${test_content[2]}.jpg`}
-              width={125}
-              height={95}
-              alt="選択中レシピNO副菜"
-            />
-          ) : (
-            <SelectFrame
-              type="SideDish"
-              width={125}
-              height={95}
-              alt="選択中レシピNO副菜"
-            />
-          )}
-          {test_content[3] ? (
-            <img
-              src={`https://makeck.mattuu.com/recipe/images/${test_content[3]}.jpg`}
-              width={125}
-              height={95}
-              alt="選択中レシピNO汁物"
-            />
-          ) : (
-            <SelectFrame
-              type="Soup"
-              width={125}
-              height={95}
-              alt="選択中レシピNO汁物"
-            />
-          )}
+          <SelectRecipie
+            recipeId={test_content[0]}
+            type="StapleFood"
+            width={125}
+            height={95}
+            alt="選択中レシピNO主食"
+          />
+          <SelectRecipie
+            recipeId={test_content[1]}
+            type="MainDish"
+            width={125}
+            height={95}
+            alt="選択中レシピNO主食"
+          />
+          <SelectRecipie
+            recipeId={test_content[2]}
+            type="SideDish"
+            width={125}
+            height={95}
+            alt="選択中レシピNO副菜"
+          />
+          <SelectRecipie
+            recipeId={test_content[3]}
+            type="Soup"
+            width={125}
+            height={95}
+            alt="選択中レシピNO汁物"
+          />
         </div>
 
         {/* DialogActionsコンポーネントの利用 */}
