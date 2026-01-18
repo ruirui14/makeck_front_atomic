@@ -7,6 +7,7 @@ import useMenuData from "../hooks/useMenuData";
 import FooterSection from "../component/organisms/FooterSection";
 import HeaderSection from "../component/organisms/HeaderSection";
 import SelectRecipieSection from "../component/organisms/SelectRecipieSection";
+import SelectDialogSection from "../component/organisms/SelectDialogSection";
 
 // import Swal from "sweetalert2";
 
@@ -200,7 +201,7 @@ export default function RecipeSelection() {
             />
           </form>
         </div>
-        
+
         {/*レシピ選択エリア*/}
         <SelectRecipieSection
           menus={menus}
@@ -211,7 +212,7 @@ export default function RecipeSelection() {
 
         {/*レシピ選択中モーダル*/}
         <div>
-          <TestDialog
+          {/* <TestDialog
             isOpen={testDialogOpen}
             test_content={selectsData}
             onConfirm={() => {
@@ -222,6 +223,12 @@ export default function RecipeSelection() {
               setTestDialogOpen(false);
               console.log("キャンセルが押されました");
             }}
+          /> */}
+
+          <SelectDialogSection
+            open={testDialogOpen}
+            recipes={selectsData}
+            onClose={() => setTestDialogOpen(false)}
           />
 
           <button className="DialogButton" onClick={buttonClickHome}>
