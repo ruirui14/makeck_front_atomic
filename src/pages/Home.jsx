@@ -5,6 +5,7 @@ import HeaderBase from '../component/atoms/HeaderBase';
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import FooterMenu from '../component/atoms/FooterMenu';
 import ButtonLabel from "../component/atoms/ButtonLabel";
+import FooterSection from '../component/organisms/FooterSection';
 
 function Home() {
   const navigate = useNavigate();
@@ -46,10 +47,7 @@ function Home() {
         <div className="supplementText">coming soon...</div>
       </main>
 
-      <footer id="homeFooter">
-        <FooterMenu buttonType="select" />
-        <FooterMenu buttonType="share" />
-      </footer>
+      <FooterSection isHome={true} />
     </div>
   );
 }

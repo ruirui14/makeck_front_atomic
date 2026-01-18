@@ -6,11 +6,10 @@ import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
 import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
-import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
 import CategoryButtonList from "../component/molecules/CategoryButtonList";
-import FooterButton from "../component/molecules/FooterButton";
 import ConfirmeRecipie from "../component/molecules/ConfirmeRecipie";
+import FooterSection from "../component/organisms/FooterSection";
 
 // import Swal from "sweetalert2";
 
@@ -273,12 +272,7 @@ export default function RecipeSelection() {
       </main>
 
       {/*フッター*/}
-      <FooterBase>
-        <FooterButton
-          label="献立決定"
-          onClick={() => navigate("/menuConfirmation")}
-        />
-      </FooterBase>
+      <FooterSection label="献立決定" onClick={() => navigate("/menuConfirmation")} />
     </div>
   );
 }

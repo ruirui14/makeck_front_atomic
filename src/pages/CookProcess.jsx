@@ -9,17 +9,11 @@ import useCreateChart from "../hooks/useCreateChart"; // チャート用デー�
 import { useRef } from "react";
 import CookTime from "../component/atoms/CookTime";
 import PageTitle from "../component/atoms/PageTitle";
-import RecipeImage from "../component/atoms/RecipeImage";
 import ArrowIcon from "../component/atoms/ArrowIcon";
-import RecipeNameBubble from "../component/atoms/RecipeNameBubble";
-import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
-import ProcessType from "../component/molecules/ProcessType";
-import ProcessChart from "../component/molecules/ProcessChart";
-import FooterButton from "../component/molecules/FooterButton";
 import ProcessChartSection from "../component/organisms/ProcessChartSection";
-import ChartRecipeImages from "../component/molecules/ChartRecipeImages";
 import ProcessOverviewSection from "../component/organisms/ProcessOverviewSection";
+import FooterSection from "../component/organisms/FooterSection";
 
 
 
@@ -45,9 +39,6 @@ function CookProcess() {
   
   const menus = data ? data : "";
   console.log(`menus : \n`, menus);
-
-  // 選択した4品の画像URL
-  var selectImage = JSON.parse(localStorage.getItem("select_image"));
 
   // チャート用データ整形
   const { chart, chartError } = useCreateChart(menus ? menus : null);
@@ -139,12 +130,8 @@ function CookProcess() {
           </dialog>
         </main>
 
-        <FooterBase>
-          <FooterButton
-            label="調理完了"
-            onClick={() => dialogRef.current.showModal()} 
-          />
-        </FooterBase>
+        <FooterSection label="調理完了" onClick={() => dialogRef.current.showModal()} />
+        
       </div>
     );
   }

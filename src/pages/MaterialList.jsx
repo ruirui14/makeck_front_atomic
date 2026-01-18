@@ -7,9 +7,8 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import SectionLine from "../component/atoms/SectionLine";
 import MaterialItem from "../component/atoms/MaterialItem";
-import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
-import FooterButton from "../component/molecules/FooterButton";
+import FooterSection from "../component/organisms/FooterSection";
 
 export default function MaterialList() {
   console.log("選択中のレシピIDリスト:");
@@ -224,12 +223,7 @@ export default function MaterialList() {
         </main>
 
         {/*フッター*/}
-        <FooterBase>
-          <FooterButton
-            label="調理開始！"
-            onClick={() => navigate("/cookProcess")}
-          />
-        </FooterBase>
+        <FooterSection label="調理開始！" onClick={() => navigate("/cookProcess")} />
       </div>
     );
 
