@@ -1,14 +1,13 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
 import DetailDescBase from '../component/atoms/DetailDescBase';
 import DetailDescText from '../component/atoms/DetailDescText';
-import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import DetailTitleBox from '../component/atoms/DetailTitleBox';
 import DetailNumber from '../component/atoms/DetailNumber';
 import SectionLine from "../component/atoms/SectionLine";
 import MaterialItem from "../component/atoms/MaterialItem";
-import HeaderBase from '../component/atoms/HeaderBase';
+import HeaderSection from '../component/organisms/HeaderSection';
 
 
 // ハリボテデータ
@@ -48,9 +47,6 @@ function StepsDetail() {
     const { id } = useParams();
     console.log("id : ", id);
     
-    // 画面遷移用フック
-    const navigate = useNavigate();
-    
     // ページ名
     const title = "手順詳細";
 
@@ -66,14 +62,7 @@ function StepsDetail() {
     const _detail = data;
     return (
       <div className="App">
-        <HeaderBase>
-          <ArrowIcon
-            direction="left"
-            className="backBtn"
-            onClick={() => navigate("/CookProcess")}
-          />
-          <div id="pageTitle">{title}</div>
-        </HeaderBase>
+        <HeaderSection title={title} />
 
         <main>
           {/* 調理手順番号、料理名 */}

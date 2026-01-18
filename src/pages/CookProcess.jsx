@@ -2,18 +2,14 @@
 import { useNavigate } from "react-router-dom"; // 画面遷移
 import "regenerator-runtime";
 
-import images from "../hooks/images"; // 画像取得
-
 import useMenuData from "../hooks/useMenuData"; // チャート用データ取得
 import useCreateChart from "../hooks/useCreateChart"; // チャート用データ整形
 import { useRef } from "react";
 import CookTime from "../component/atoms/CookTime";
-import PageTitle from "../component/atoms/PageTitle";
-import ArrowIcon from "../component/atoms/ArrowIcon";
-import HeaderBase from "../component/atoms/HeaderBase";
 import ProcessChartSection from "../component/organisms/ProcessChartSection";
 import ProcessOverviewSection from "../component/organisms/ProcessOverviewSection";
 import FooterSection from "../component/organisms/FooterSection";
+import HeaderSection from "../component/organisms/HeaderSection";
 
 
 
@@ -55,15 +51,7 @@ function CookProcess() {
   if (loading) {
       return (
           <div className='App noScroll'>
-              <HeaderBase>
-                  {/* 戻るボタン */}
-                  <img
-                    src={images.backBtn}
-                    alt="戻るアイコン"
-                    className="backBtn"
-                    onClick={() => navigate('/MaterialList')} />
-                  <div id='pageTitle'>調理手順</div>
-              </HeaderBase>
+              <HeaderSection title="調理手順" />
           </div>
       )
   }
@@ -74,35 +62,19 @@ function CookProcess() {
     console.log(error ? error : chartError)
     return (
         <div className='App noScroll'>
-            <HeaderBase>
-                {/* 戻るボタン */}
-                <img
-                  src={images.backBtn}
-                  alt="戻るアイコン"
-                  className="backBtn"
-                  onClick={() => navigate('/MaterialList')} 
-                />
-                <div id='pageTitle'>調理手順</div>
-            </HeaderBase>
-            <main>
-              <h2 id='message'>メニューデータの取得中に</h2>
-              <h2 id='message'>エラーが発生しました</h2>
-            </main>
+          <HeaderSection title="調理手順" />
+
+          <main>
+            <h2 id='message'>メニューデータの取得中に</h2>
+            <h2 id='message'>エラーが発生しました</h2>
+          </main>
         </div>
     )
   }else{
     // 正常時
     return (
       <div className="App noScroll">
-        <HeaderBase>
-          {/* 戻るボタン */}
-          <ArrowIcon
-            direction="left"
-            className="backBtn"
-            onClick={() => navigate("/MaterialList")}
-          />
-          <PageTitle id={"pageTitle"} pageName={"調理手順"}></PageTitle>
-        </HeaderBase>
+        <HeaderSection title="調理手順" />
 
         <main>
           <CookTime time={chartData?.totalTime} />

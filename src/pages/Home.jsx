@@ -1,20 +1,16 @@
 import images from '../hooks/images';
 import { useNavigate } from "react-router-dom";
 import ButtonBase from '../component/atoms/ButtonBase';
-import HeaderBase from '../component/atoms/HeaderBase';
 import ArrowIcon from "../component/atoms/ArrowIcon";
-import FooterMenu from '../component/atoms/FooterMenu';
 import ButtonLabel from "../component/atoms/ButtonLabel";
 import FooterSection from '../component/organisms/FooterSection';
+import HeaderSection from '../component/organisms/HeaderSection';
 
 function Home() {
   const navigate = useNavigate();
   return (
     <div className="App noScroll">
-      <HeaderBase>
-        <img src={images.icon} id="userIcon" alt="icon" />
-        <div id="appName">MakeCK</div>
-      </HeaderBase>
+      <HeaderSection isHome={true} />
 
       <main className="">
         <div className="cookingImgwrapper">

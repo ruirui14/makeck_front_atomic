@@ -1,6 +1,7 @@
 //４方向の矢印アイコン
 import PropTypes from "prop-types";
 import images from "../../hooks/images";
+import { useLocation } from "react-router-dom";
 function ArrowIcon({ direction = "right", alt = "矢印", className, onClick }) {
   const arrowMap = {
     right: images.rightArrow,
@@ -8,7 +9,10 @@ function ArrowIcon({ direction = "right", alt = "矢印", className, onClick }) 
     top: images.closeButton,
     down: images.openButton,
   };
-  return <img className={className} src={arrowMap[direction]} onClick={onClick} alt={alt} />;
+
+  const locatioin = useLocation();
+  const isDetail = locatioin.pathname.includes("Detail");
+  return <img className={className} src={isDetail? `.${arrowMap[direction]}` : arrowMap[direction]} onClick={onClick} alt={alt} />;
 }
 
 ArrowIcon.propTypes = {
