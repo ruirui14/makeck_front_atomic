@@ -1,15 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import images from "../hooks/images";
 import { useState } from "react";
-import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
-import FooterSection from "../component/organisms/FooterSection";
-import HeaderSection from "../component/organisms/HeaderSection";
-import SelectRecipieSection from "../component/organisms/SelectRecipieSection";
-import SelectDialogSection from "../component/organisms/SelectDialogSection";
-
-// import Swal from "sweetalert2";
+import RecipeSelectionTemp from "../component/templates/RecipeSelectionTemp";
 
 export default function RecipeSelection() {
   const navigate = useNavigate(); //遷移のやつだよ
@@ -37,7 +30,7 @@ export default function RecipeSelection() {
     localstroage.setItem(select_state, JSON.stringify(updatedSelectsData));
 
     const selectImages = JSON.parse(
-      localStorage.getItem("select_image") || "[]"
+      localStorage.getItem("select_image") || "[]",
     );
 
     while (selectImages.length < 4) selectImages.push(""); // 空文字で埋める
@@ -71,44 +64,6 @@ export default function RecipeSelection() {
     },
   ];
 
-  // 仮のメニューデータ
-  // const menuRecipe = [
-  //   {
-  //     id: "5kbhajx",
-  //     image: images.FriedChicken,
-  //     name: "田舎風鶏のからあげ",
-  //   },
-  //   {
-  //     id: "a2spoij",
-  //     image: images.MeatPotatoes,
-  //     name: "変わり肉じゃが",
-  //   },
-  //   {
-  //     id: "ni8ttzn",
-  //     image: images.squidRisotto,
-  //     name: "イカのリゾット",
-  //   },
-  //   {
-  //     id: "k48tdze",
-  //     image: images.frankfurtSaute,
-  //     name: "フランクフルトのソテー",
-  //   },
-  //   {
-  //     id: "jf78btv",
-  //     image: images.coconutMilkJelly,
-  //     name: "ココナッツミルクのゼリー",
-  //   },
-  //   {
-  //     id: "wyfyi3i",
-  //     image: images.asuparaSoup,
-  //     name: "アスパラガスのスープ",
-  //   },
-  //   {
-  //     id: "4yja48v",
-  //     image: images.brownSeaweedSoup,
-  //     name: "ワカメスープ",
-  //   },
-  // ];
 
   const localkey = "header_state";
 
@@ -126,12 +81,11 @@ export default function RecipeSelection() {
   const select_state = "select_key";
 
   const [selectedCategory, _setSelectedCategory] = useState(
-    headerNames[now_state]
+    headerNames[now_state],
   ); // 初期状態として主食を設定
 
   const handleClick = (index) => {
     console.log("押されたよ");
-    // localstroage.setItem(localkey,(Number(now_state) + 1) % 4);
     localstroage.setItem(localkey, index);
     // setSelectedCategory(headerNames[2]);  // 画像が押された時にheaderNames[3]を選択
     window.location.reload();
@@ -177,7 +131,7 @@ export default function RecipeSelection() {
       body: JSON.stringify({
         category: headerNames[now_state].name,
       }),
-    }
+    },
   );
   // var menus = data ? data : [];
   console.log("APIレスポンス内容 >>>", data);
@@ -185,63 +139,17 @@ export default function RecipeSelection() {
   console.log(menus);
 
   return (
-    <div className="App">
-      {/*ヘッダー*/}
-      <HeaderSection title={selectedCategory.name} />
-
-      <main>
-        {/*検索フォーム*/}
-        <div className="Form">
-          <form>
-            <input
-              className="FormDesign"
-              type="text"
-              data-search="search"
-              placeholder="キーワード検索"
-            />
-          </form>
-        </div>
-
-        {/*レシピ選択エリア*/}
-        <SelectRecipieSection
-          menus={menus}
-          selectedId={selectsData[now_state]}
-          onCategorySelect={handleClick}
-          onRecipeSelect={selectRecipeIdChanger}
-        />
-
-        {/*レシピ選択中モーダル*/}
-        <div>
-          {/* <TestDialog
-            isOpen={testDialogOpen}
-            test_content={selectsData}
-            onConfirm={() => {
-              setTestDialogOpen(false);
-              console.log("okが押されました");
-            }}
-            onCancel={() => {
-              setTestDialogOpen(false);
-              console.log("キャンセルが押されました");
-            }}
-          /> */}
-
-          <SelectDialogSection
-            open={testDialogOpen}
-            recipes={selectsData}
-            onClose={() => setTestDialogOpen(false)}
-          />
-
-          <button className="DialogButton" onClick={buttonClickHome}>
-            <img src={images.selectMenu} alt="ボタン画像" />
-          </button>
-        </div>
-      </main>
-
-      {/*フッター*/}
-      <FooterSection
-        label="献立決定"
-        onClick={() => navigate("/menuConfirmation")}
-      />
-    </div>
+    <RecipeSelectionTemp
+      title={selectedCategory.name}
+      menus={menus}
+      selectedId={selectsData[now_state]}
+      isDialogOpen={testDialogOpen}
+      selectedRecipes={selectsData}
+      onCategorySelect={handleClick}
+      onRecipeSelect={selectRecipeIdChanger}
+      onDialogClose={() => setTestDialogOpen(false)}
+      onDialogClick={buttonClickHome}
+      onFooterClick={() => navigate("/menuConfirmation")}
+    />
   );
 }
