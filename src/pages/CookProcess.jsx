@@ -5,11 +5,7 @@ import "regenerator-runtime";
 import useMenuData from "../hooks/useMenuData"; // チャート用データ取得
 import useCreateChart from "../hooks/useCreateChart"; // チャート用データ整形
 import { useRef } from "react";
-import CookTime from "../component/atoms/CookTime";
-import ProcessChartSection from "../component/organisms/ProcessChartSection";
-import ProcessOverviewSection from "../component/organisms/ProcessOverviewSection";
-import FooterSection from "../component/organisms/FooterSection";
-import HeaderSection from "../component/organisms/HeaderSection";
+import CookProcessTemp from "../component/templates/CookProcessTemp";
 
 
 
@@ -32,12 +28,14 @@ function CookProcess() {
       }),
     }
   );
+
+  console.log(`error: ${typeof(error)}`)
   
   const menus = data ? data : "";
   console.log(`menus : \n`, menus);
 
   // チャート用データ整形
-  const { chart, chartError } = useCreateChart(menus ? menus : null);
+  const { chart } = useCreateChart(menus ? menus : null);
   var chartData = chart ? chart : null;
   console.log(chartData);
 
@@ -47,66 +45,19 @@ function CookProcess() {
     path: "/",
   };
 
-  // 読み込み時
-  if (loading) {
-      return (
-          <div className='App noScroll'>
-              <HeaderSection title="調理手順" />
-          </div>
-      )
-  }
-  // エラー発生時
-  if (error || chartError) {
-    // エラーメッセージ取得
-    console.log("エラー発生");
-    console.log(error ? error : chartError)
-    return (
-        <div className='App noScroll'>
-          <HeaderSection title="調理手順" />
-
-          <main>
-            <h2 id='message'>メニューデータの取得中に</h2>
-            <h2 id='message'>エラーが発生しました</h2>
-          </main>
-        </div>
-    )
-  }else{
-    // 正常時
-    return (
-      <div className="App noScroll">
-        <HeaderSection title="調理手順" />
-
-        <main>
-          <CookTime time={chartData?.totalTime} />
-          <ProcessOverviewSection menu={chartData?.menu} />
-
-          {/* ガントチャートコンテナ */}
-          <ProcessChartSection chartData={chartData} />
-
-          {/* 調理完了ダイアログ */}
-          <dialog
-            id="cookFinDialog"
-            ref={dialogRef}
-            onClick={() => {
-              navigate(nextPage.path);
-              localStorage.clear();
-            }}
-          >
-            <div id="dialogContainer">
-              <div id="dialogLine">     
-                <div id="dialogTitle">調理完了</div>
-                <div id="dialogText">お疲れさまでした！</div>
-              </div>
-            </div>
-            <div id="closeText">タップで閉じる</div>
-          </dialog>
-        </main>
-
-        <FooterSection label="調理完了" onClick={() => dialogRef.current.showModal()} />
-        
-      </div>
-    );
-  }
+  return(
+    <CookProcessTemp
+      loading={loading}
+      error={error}
+      chartData={chartData}
+      dialogRef={dialogRef}
+      onDialogClick={() => {
+        navigate(nextPage.path);
+        localStorage.clear();
+      }}
+      onFooterClick={() => dialogRef.current.showModal()}
+    />
+  )
 }
 
 export default CookProcess;
