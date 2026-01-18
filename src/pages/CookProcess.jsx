@@ -19,6 +19,7 @@ import ProcessChart from "../component/molecules/ProcessChart";
 import FooterButton from "../component/molecules/FooterButton";
 import ProcessChartSection from "../component/organisms/ProcessChartSection";
 import ChartRecipeImages from "../component/molecules/ChartRecipeImages";
+import ProcessOverviewSection from "../component/organisms/ProcessOverviewSection";
 
 
 
@@ -114,9 +115,7 @@ function CookProcess() {
 
         <main>
           <CookTime time={chartData?.totalTime} />
-          <ProcessType />
-          {/* 献立画像コンテナ */}
-          <ChartRecipeImages menu={chartData?.menu} />
+          <ProcessOverviewSection menu={chartData?.menu} />
 
           {/* ガントチャートコンテナ */}
           <ProcessChartSection chartData={chartData} />
