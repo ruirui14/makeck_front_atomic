@@ -9,6 +9,7 @@ import CategoryButtonList from "../component/molecules/CategoryButtonList";
 import FooterSection from "../component/organisms/FooterSection";
 import HeaderSection from "../component/organisms/HeaderSection";
 import RecipieList from "../component/organisms/RecipieList";
+import SelectRecipieSection from "../component/organisms/SelectRecipieSection";
 
 // import Swal from "sweetalert2";
 
@@ -202,33 +203,19 @@ export default function RecipeSelection() {
             />
           </form>
         </div>
-        {/*主食 主菜 副菜 汁物 遷移ボタン*/}
-        <div className="wrapButton">
-          <CategoryButtonList onSelect={handleClick} />
-        </div>
-        {/*区切り線*/}
-        <SectionLine className="line" />
-        {/*説明文*/}
-        <div className="explanation">
-          <p>レシピを選択してください</p>
-        </div>
-        {/*レシピ選択コンテナ*/}
-        <RecipieList
+        
+        {/*レシピ選択エリア*/}
+        <SelectRecipieSection
           menus={menus}
           selectedId={selectsData[now_state]}
-          onSelect={selectRecipeIdChanger}
+          onCategorySelect={handleClick}
+          onRecipeSelect={selectRecipeIdChanger}
         />
 
-        {/* <img className="selectNow" src={images.selectNow} alt="選択中囲み" /> */}
         {/*レシピ選択中モーダル*/}
         <div>
-          {/* カスタムダイアログ */}
           <TestDialog
             isOpen={testDialogOpen}
-            // test_content={selectsData.map((id) =>
-            //   // menuRecipe.find((menu) => menu.id === id)
-            //   menus.find((menu) => menu.id === id)
-            // )}
             test_content={selectsData}
             onConfirm={() => {
               setTestDialogOpen(false);
