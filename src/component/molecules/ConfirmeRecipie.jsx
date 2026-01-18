@@ -10,7 +10,7 @@ function ConfirmeRecipie({ image, name, isSelected, onClick }) {
         <RecipeImage image={image} page="RecipeSelection" />
         {isSelected && <div className="overlay">選択中</div>}
       </div>
-      <RecipeName menuName={name} />
+      <RecipeName menuName={name} onClick={onClick} />
     </div>
   );
 }
