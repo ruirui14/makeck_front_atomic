@@ -19,7 +19,7 @@ ArrowIcon.propTypes = {
   direction: PropTypes.oneOf(["right", "left", "top", "down"]),
   alt: PropTypes.string,
   className: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 
