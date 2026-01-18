@@ -9,9 +9,8 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 import RecipeName from "../component/atoms/RecipeName";
-import FooterBase from "../component/atoms/FooterBase";
 import HeaderBase from "../component/atoms/HeaderBase";
-import FooterButton from "../component/molecules/FooterButton";
+import FooterSection from "../component/organisms/FooterSection";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -195,18 +194,15 @@ function MenuConfirmation() {
         </div>
       </main>
 
-      <FooterBase>
-        <FooterButton
-          label="手順書作成"
-          onClick={() => {
-            // loadscreen 出す
-            document.querySelector(".loader_screen").style.display = "flex";
-            setTimeout(() => {
-              navigate("/MaterialList");
-            }, 3000);
-          }}
-        />
-      </FooterBase>
+      <FooterSection label="手順書作成" 
+        onClick={() => {
+          // loadscreen 出す
+          document.querySelector(".loader_screen").style.display = "flex";
+          setTimeout(() => {
+            navigate("/MaterialList");
+          }, 3000);
+        }}
+      />
     </div>
   );
 }

@@ -7,6 +7,11 @@ const menuConfig = {
   "share": {id: "shareBtn", url: images.share, alt: "共有アイコン", label: "レシピ共有"}
 }
 
+/**
+ * 渡されたボタン種別に応じたフッター用ボタン生成
+ * @param {string} buttonType ボタンの種類判別(select / share) 
+ * @returns Home画面のフッターボタン
+ */
 function FooterMenu({ buttonType }) {
   const menuType = menuConfig[buttonType];
   console.log(menuType);
