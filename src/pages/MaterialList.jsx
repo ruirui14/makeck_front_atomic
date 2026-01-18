@@ -7,8 +7,8 @@ import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import SectionLine from "../component/atoms/SectionLine";
 import MaterialItem from "../component/atoms/MaterialItem";
-import HeaderBase from "../component/atoms/HeaderBase";
 import FooterSection from "../component/organisms/FooterSection";
+import HeaderSection from "../component/organisms/HeaderSection";
 
 export default function MaterialList() {
   console.log("選択中のレシピIDリスト:");
@@ -171,15 +171,7 @@ export default function MaterialList() {
     return (
       <div className="App">
         {/*ヘッダー*/}
-        <HeaderBase>
-          <ArrowIcon
-            direction="left"
-            className="backBtn"
-            onClick={() => navigate("/menuConfirmation")}
-          />
-          <div id="pageTitle">材料一覧</div>
-        </HeaderBase>
-
+        <HeaderSection title="材料一覧" />
         <main>
           <CookTime time={""} />
 

@@ -4,12 +4,11 @@ import images from "../hooks/images";
 import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
-import ArrowIcon from "../component/atoms/ArrowIcon";
 import SectionLine from "../component/atoms/SectionLine";
-import HeaderBase from "../component/atoms/HeaderBase";
 import CategoryButtonList from "../component/molecules/CategoryButtonList";
 import ConfirmeRecipie from "../component/molecules/ConfirmeRecipie";
 import FooterSection from "../component/organisms/FooterSection";
+import HeaderSection from "../component/organisms/HeaderSection";
 
 // import Swal from "sweetalert2";
 
@@ -189,14 +188,7 @@ export default function RecipeSelection() {
   return (
     <div className="App">
       {/*ヘッダー*/}
-      <HeaderBase>
-        <ArrowIcon
-          direction="left"
-          className="backBtn"
-          onClick={() => navigate("/")}
-        />
-        <div id="pageTitle">{selectedCategory.name}</div>
-      </HeaderBase>
+      <HeaderSection title={selectedCategory.name} />
 
       <main>
         {/*検索フォーム*/}

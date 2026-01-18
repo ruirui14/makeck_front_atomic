@@ -5,12 +5,11 @@ import "../loader.css";
 import _Marquee from "react-fast-marquee"; // 文字スライド用
 import images from "../hooks/images";
 import RecipeImage from "../component/atoms/RecipeImage";
-import ArrowIcon from "../component/atoms/ArrowIcon";
 import HeadingLine from "../component/atoms/HeadingLine";
 import RecipeCategoryName from "../component/atoms/RecipeCategoryName";
 import RecipeName from "../component/atoms/RecipeName";
-import HeaderBase from "../component/atoms/HeaderBase";
 import FooterSection from "../component/organisms/FooterSection";
+import HeaderSection from "../component/organisms/HeaderSection";
 
 // 豆知識(仮データ)
 const _trivia = [
@@ -127,12 +126,8 @@ function MenuConfirmation() {
   if (screen.orientation.angle != 0) {
     return (
       <div className="App">
-        <HeaderBase>
-          <div className="backBtn" onClick={() => navigate("/RecipeSelection")}>
-            ＜
-          </div>
-          <div id="pageTitle">{title}</div>
-        </HeaderBase>
+        <HeaderSection title={title} />
+        
         <main>
           <h1 style={{ fontFamily: "KaiseiOpti-Medium" }}>
             画面を縦にしてください
@@ -159,14 +154,7 @@ function MenuConfirmation() {
           <span className="loader"></span>
         </div>
       </div>
-      <HeaderBase>
-        <ArrowIcon
-          direction="left"
-          className="backBtn"
-          onClick={() => navigate("/RecipeSelection")}
-        />
-        <div id="pageTitle">{title}</div>
-      </HeaderBase>
+      <HeaderSection title={title} />
 
       <main>
         {/* <div id='cookingTime'>
