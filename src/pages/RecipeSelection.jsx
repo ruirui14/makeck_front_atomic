@@ -4,11 +4,8 @@ import images from "../hooks/images";
 import { useState } from "react";
 import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
-import SectionLine from "../component/atoms/SectionLine";
-import CategoryButtonList from "../component/molecules/CategoryButtonList";
 import FooterSection from "../component/organisms/FooterSection";
 import HeaderSection from "../component/organisms/HeaderSection";
-import RecipieList from "../component/organisms/RecipieList";
 import SelectRecipieSection from "../component/organisms/SelectRecipieSection";
 
 // import Swal from "sweetalert2";

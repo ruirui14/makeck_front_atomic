@@ -21,9 +21,9 @@ export default function TestDialog({ isOpen,test_content, onConfirm, onCancel })
     );
 }
 
-  TestDialog.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    onConfirm: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-    test_content: PropTypes.func.isRequired,
-  };
+ TestDialog.propTypes = {
+   isOpen: PropTypes.bool.isRequired,
+   onConfirm: PropTypes.func, 
+   onCancel: PropTypes.func.isRequired,
+   test_content: PropTypes.array.isRequired,
+ };

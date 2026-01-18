@@ -18,6 +18,7 @@ function RecipieList({ menus, selectedId, onSelect }) {
               image={menu.image}
               name={menu.name}
               isSelected={isSelected}
+              onClick={() => onSelect(menu.id, menu.image)}
             />
           </div>
         );

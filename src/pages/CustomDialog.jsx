@@ -68,8 +68,8 @@ export default function CustomDialog({
 
 CustomDialog.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  content: PropTypes.func.isRequired,
-  test_content: PropTypes.func.isRequired,
-  cancelButtonLabel: PropTypes.func.isRequired,
+  content: PropTypes.node,
+  test_content: PropTypes.array,
+  cancelButtonLabel: PropTypes.string.isRequired,
   onCancel: PropTypes.func.isRequired,
 };
