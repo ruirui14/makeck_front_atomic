@@ -28,7 +28,7 @@ function Home() {
             onClick={() => navigate("/RecipeSelection")}
           >
             <ButtonLabel className="btnText" text="1からレシピ選択" />
-            <ArrowIcon direction="right" className="arrow" />
+            <ArrowIcon direction="right" className="arrow"/>
           </ButtonBase>
 
           <ButtonBase
