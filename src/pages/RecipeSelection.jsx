@@ -6,9 +6,9 @@ import TestDialog from "./TestDialog";
 import useMenuData from "../hooks/useMenuData";
 import SectionLine from "../component/atoms/SectionLine";
 import CategoryButtonList from "../component/molecules/CategoryButtonList";
-import ConfirmeRecipie from "../component/molecules/ConfirmeRecipie";
 import FooterSection from "../component/organisms/FooterSection";
 import HeaderSection from "../component/organisms/HeaderSection";
+import RecipieList from "../component/organisms/RecipieList";
 
 // import Swal from "sweetalert2";
 
@@ -206,36 +206,19 @@ export default function RecipeSelection() {
         <div className="wrapButton">
           <CategoryButtonList onSelect={handleClick} />
         </div>
-
         {/*区切り線*/}
         <SectionLine className="line" />
-
         {/*説明文*/}
         <div className="explanation">
           <p>レシピを選択してください</p>
         </div>
         {/*レシピ選択コンテナ*/}
-        <div id="recipeChoiceContainer">
-          {/* {menuRecipe.map((menu, index) => { */}
-          {menus.map((menu, index) => {
-            const isSelected = selectsData[now_state] === String(menu.id); // 選択状態を判定
-            return (
-              <div
-                className={`menuWrapperR ${isSelected ? "selected" : ""}`}
-                key={index}
-                onClick={() => selectRecipeIdChanger(menu.id, menu.image)}
-              >
-                <ConfirmeRecipie
-                  key={menu.key}
-                  image={menu.image}
-                  name={menu.name}
-                  isSelected={isSelected}
-                  onClick={() => selectRecipeIdChanger(menu.id, menu.image)}
-                />
-              </div>
-            );
-          })}
-        </div>
+        <RecipieList
+          menus={menus}
+          selectedId={selectsData[now_state]}
+          onSelect={selectRecipeIdChanger}
+        />
+
         {/* <img className="selectNow" src={images.selectNow} alt="選択中囲み" /> */}
         {/*レシピ選択中モーダル*/}
         <div>
@@ -264,7 +247,10 @@ export default function RecipeSelection() {
       </main>
 
       {/*フッター*/}
-      <FooterSection label="献立決定" onClick={() => navigate("/menuConfirmation")} />
+      <FooterSection
+        label="献立決定"
+        onClick={() => navigate("/menuConfirmation")}
+      />
     </div>
   );
 }
