@@ -18,6 +18,7 @@ import ProcessType from "../component/molecules/ProcessType";
 import ProcessChart from "../component/molecules/ProcessChart";
 import FooterButton from "../component/molecules/FooterButton";
 import ProcessChartSection from "../component/organisms/ProcessChartSection";
+import ChartRecipeImages from "../component/molecules/ChartRecipeImages";
 
 
 
@@ -114,39 +115,8 @@ function CookProcess() {
         <main>
           <CookTime time={chartData?.totalTime} />
           <ProcessType />
-
           {/* 献立画像コンテナ */}
-          <div id="imagesBorder">
-            <div id="imageContainer" className="grid">
-              {selectImage.map((element, index) => {
-                console.log("element: ", element);
-                return (
-                  <div key={`menuImage-${index}`} className="imageWrapper">
-                    <RecipeNameBubble
-                      className={`bubble-${index}`}
-                      bgImage={images.speechBubble}
-                      recipeName={chartData?.menu?.[index].name}
-                    />
-                    {/* 料理画像コンポーネント */}
-                    <RecipeImage
-                      image={element}
-                      page="CookProcess"
-                      onclick={() => {
-                        var bubble = document.getElementsByClassName(
-                          `bubble-${index}`
-                        );
-                        console.log(bubble);
-                        bubble[0].style.display = "block";
-                        setTimeout(() => {
-                          bubble[0].style.display = "none";
-                        }, 1000);
-                      }}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <ChartRecipeImages menu={chartData?.menu} />
 
           {/* ガントチャートコンテナ */}
           <ProcessChartSection chartData={chartData} />
