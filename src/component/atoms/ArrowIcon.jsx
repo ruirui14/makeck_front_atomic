@@ -5,14 +5,33 @@ import { useLocation } from "react-router-dom";
 function ArrowIcon({ direction = "right", alt = "矢印", className, onClick }) {
   const arrowMap = {
     right: images.rightArrow,
-    left: images.backBtn,
+    // left: images.backBtn
     top: images.closeButton,
     down: images.openButton,
   };
 
   const locatioin = useLocation();
   const isDetail = locatioin.pathname.includes("Detail");
-  return <img className={className} src={isDetail? `.${arrowMap[direction]}` : arrowMap[direction]} onClick={onClick} alt={alt} />;
+  if (direction === "left") {
+    return (
+      <span
+        className={className}
+        onClick={onClick}
+        role="button"
+        aria-label={alt}
+      >
+        ＜
+      </span>
+    );
+  }
+  return (
+    <img
+      className={className}
+      src={isDetail ? `.${arrowMap[direction]}` : arrowMap[direction]}
+      onClick={onClick}
+      alt={alt}
+    />
+  );
 }
 
 ArrowIcon.propTypes = {
@@ -21,6 +40,5 @@ ArrowIcon.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
 };
-
 
 export default ArrowIcon;
