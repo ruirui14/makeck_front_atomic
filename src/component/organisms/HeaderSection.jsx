@@ -3,6 +3,7 @@ import HeaderBase from "../atoms/HeaderBase";
 import images from "../../hooks/images";
 import ArrowIcon from "../atoms/ArrowIcon";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../atoms/PageTitle";
 
 /**
  * ページに合わせたヘッダー生成
@@ -17,7 +18,7 @@ function HeaderSection({isHome = false, title}) {
             isHome ? (
                 <>
                 <img src={images.icon} id="userIcon" alt="icon"/>
-                <div id="appName">MakeCK</div> 
+                <PageTitle id="appName" pageName="MakeCK" />
                 </>
             ) : (
                 <>
@@ -26,7 +27,7 @@ function HeaderSection({isHome = false, title}) {
                     className="backBtn"
                     onClick={() => navigate(-1)}
                 />
-                <div id="pageTitle">{title}</div>
+                <PageTitle id="pageTitle" pageName={title} />
                 </>
             )
         }</HeaderBase>
