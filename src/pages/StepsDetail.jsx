@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import useMenuData from '../hooks/useMenuData';         // チャート用データ取得
-import DetailDescBase from '../component/atoms/DetailDescBase';
-import DetailDescText from '../component/atoms/DetailDescText';
+import DetailDescCard from "../component/molecules/DetailDescCard";
 import HeadingLine from "../component/atoms/HeadingLine";
 import DetailTitleBox from '../component/atoms/DetailTitleBox';
 import DetailNumber from '../component/atoms/DetailNumber';
@@ -104,9 +103,7 @@ function StepsDetail() {
               <div className="captionText">調理方法</div>
               <HeadingLine className="captionBorder" />
             </div>
-            <DetailDescBase>
-              <DetailDescText desc={data?.description} />
-            </DetailDescBase>
+            <DetailDescCard desc={data?.description}/>
           </div>
         </main>
       </div>
