@@ -7,6 +7,7 @@ import DetailNumber from '../component/atoms/DetailNumber';
 import SectionLine from "../component/atoms/SectionLine";
 import MaterialItem from "../component/atoms/MaterialItem";
 import HeaderSection from '../component/organisms/HeaderSection';
+import DetailTitle from '../component/molecules/DetaillTitle';
 
 
 // ハリボテデータ
@@ -65,13 +66,8 @@ function StepsDetail() {
 
         <main>
           {/* 調理手順番号、料理名 */}
-          {/* <div id="stepTitle">
-            <div id="stepNumber">{details?.displayName}</div>
-            <div id="stepName">{details?.recipeName}</div>
-          </div> */}
-          <DetailTitleBox recipeName={details.recipeName} >
-            <DetailNumber num={details.displayName}/>
-          </DetailTitleBox>
+          <DetailTitle recipeName={details.recipeName} detailName={details.displayName} />
+
           {/* 材料一覧 */}
           <div id="materialsContainer">
             <div className="caption">
