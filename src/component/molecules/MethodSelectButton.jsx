@@ -1,4 +1,8 @@
 // レシピ選択方法選択ボタン
 function MethodSelectButton() {
-    return
+    return(
+        <></>
+    )
 }
+
+export default MethodSelectButton;

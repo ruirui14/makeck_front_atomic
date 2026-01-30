@@ -1,4 +1,8 @@
 //手順書詳細画面テンプレート
 function StepsDetailTemp() {
-  return;
+  return(
+    <></>
+  );
 }
+
+export default StepsDetailTemp;

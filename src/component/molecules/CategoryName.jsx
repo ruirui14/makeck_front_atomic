@@ -1,4 +1,8 @@
 // 料理カテゴリ名
 function CategoryName() {
-    return
+    return(
+        <></>
+    );
 }
+
+export default CategoryName;

@@ -1,4 +1,8 @@
 // ページの小見出し
 function SubTitle() {
-    return
+    return(
+        <></>
+    )
 }
+
+export default SubTitle;
