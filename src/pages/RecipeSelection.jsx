@@ -9,7 +9,6 @@ export default function RecipeSelection() {
 
   // カスタムダイアログ表示、非表示管理
   const [testDialogOpen, setTestDialogOpen] = useState(false);
-
   const [selectsData, setSelects] = useState(["", "", "", ""]);
 
   // ダイアログ表示ボタンクリック処理
@@ -38,9 +37,7 @@ export default function RecipeSelection() {
     localstroage.setItem("select_image", JSON.stringify(selectImages));
   };
 
-  {
-    /*ヘッダーの名前変更*/
-  }
+  // ヘッダーの名前変更
   const headerNames = [
     {
       id: 1,
@@ -64,7 +61,6 @@ export default function RecipeSelection() {
     },
   ];
 
-
   const localkey = "header_state";
 
   const localstroage = window.localStorage;
@@ -77,7 +73,7 @@ export default function RecipeSelection() {
     now_state = 0;
   }
 
-  // 選択状態のｓstatekey
+  // 選択状態のstatekey
   const select_state = "select_key";
 
   const [selectedCategory, _setSelectedCategory] = useState(
@@ -120,8 +116,7 @@ export default function RecipeSelection() {
 
   // メニューデータ取得
   //主食
-  var { data, _loading, _error } = useMenuData(
-    // `https://makeck.mattuu.com/api/${headerNames[now_state]["apipath"]}`
+  var { data } = useMenuData(
     `https://makeck.mattuu.com/recipe/search_category`,
     {
       method: "POST",
@@ -133,7 +128,7 @@ export default function RecipeSelection() {
       }),
     },
   );
-  // var menus = data ? data : [];
+  
   console.log("APIレスポンス内容 >>>", data);
   var menus = data?.result ?? [];
   console.log(menus);
