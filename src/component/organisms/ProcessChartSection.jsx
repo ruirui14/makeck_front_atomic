@@ -11,10 +11,10 @@ function ProcessChartSection({ chartData }) {
         <>
             <div id="startBar">スタート！</div>
             <div id="chartContainer" className="grid">{
-                chartData?.menu?.map((element, index) => {
+                chartData?.menu?.map((element) => {
                     return(
                         <ProcessChart
-                            key={`chart${index}`} recipe={element}
+                            key={`chart-${element.uid}`} recipe={element}
                             totalTime={chartData.totalTime}
                         />
                     );
