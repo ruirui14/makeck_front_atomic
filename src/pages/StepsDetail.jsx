@@ -75,18 +75,16 @@ function StepsDetail() {
               <HeadingLine className="captionBorder" />
             </div>
             <div className="materialList">
-              {data?.materials.map((material, index) => {
+              {data?.materials.map((material) => {
                 console.log("material : ", material);
                 return (
-                  <SectionLine className="material" key={index}>
+                  <SectionLine className="material" key={`${id}-${material.name}`}>
                     <MaterialItem
                       nameClassName="materialNameP"
                       quantityClassName="quantity"
                       name={material.name}
                       quantity={material.quantity}
                     />
-                    {/* <div className="materialName">{material.name}</div>
-                    <div className="quantity">{material.quantity}</div> */}
                   </SectionLine>
                 );
               })}
