@@ -14,7 +14,7 @@ function SelectRecipieList({ recipes }) {
     <div className="dialogContainer">
       {frames.map((frame, index) => (
         <SelectRecipie
-          key={index}
+          key={frame.type}
           recipeId={recipes[index]}
           type={frame.type}
           width={125}
