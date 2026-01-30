@@ -1,4 +1,4 @@
-// レシピ選択方法　選択ボタン
+// レシピ選択方法選択ボタン
 function MethodSelectButton() {
     return
 }

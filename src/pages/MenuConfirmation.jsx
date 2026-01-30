@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../loader.css";
-// import useMenuData from "../hooks/useMenuData"; // チャート用データ取得
+
 import _Marquee from "react-fast-marquee"; // 文字スライド用
 import images from "../hooks/images";
 import RecipeImage from "../component/atoms/RecipeImage";

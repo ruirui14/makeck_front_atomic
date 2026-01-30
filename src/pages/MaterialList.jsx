@@ -27,7 +27,6 @@ export default function MaterialList() {
     setSelected(i)  //クリックされたアイテムを選択状態にする
   }
 
-
   // サンプルデータ
   // const datas = [
   //     {
@@ -59,7 +58,6 @@ export default function MaterialList() {
   //                 "大匙",
   //                 "つまみ"
   //             ],
-
   //     },
   //     {
   //         materialname: "イカのリゾット",
@@ -92,7 +90,6 @@ export default function MaterialList() {
   //                 "大匙",
   //                 "つまみ",
   //                 "g"
-
   //             ]
   //     },
   //     {
@@ -104,7 +101,6 @@ export default function MaterialList() {
   //                 "砂糖",
   //                 "粉ゼラチン"
   //             ],
-
   //         number:
   //             [
   //                 "200",
@@ -118,7 +114,6 @@ export default function MaterialList() {
   //                 "ml",
   //                 "大匙",
   //                 "g"
-
   //             ]
   //     },
   //     {
@@ -146,78 +141,77 @@ export default function MaterialList() {
   //                 "つまみ",
   //                 "小匙",
   //                 "小匙"
-
   //             ]
   //     },
   // ]
 
     //材料JSON取得
-    var { data, _loading, _error } = useMenuData(
-      `https://dev-makeck.mattuu.com//chart/sermaterials`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          "recipe_ids": recipe_ids
-        }),
-      }
-    )
-    var material = data ? data : [];
-    console.log("取得した材料データ:");
-    console.log(material);
+  
+  var { data } = useMenuData(
+    `https://dev-makeck.mattuu.com//chart/sermaterials`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "recipe_ids": recipe_ids
+      }),
+    }
+  )
+  var material = data ? data : [];
+  console.log("取得した材料データ:");
+  console.log(material);
 
-    return (
-      <div className="App">
-        {/*ヘッダー*/}
-        <HeaderSection title="材料一覧" />
-        <main>
-          <CookTime time={""} />
+  return (
+    <div className="App">
+      {/*ヘッダー*/}
+      <HeaderSection title="材料一覧" />
+      <main>
+        <CookTime time={""} />
 
-          <div className="wrapper">
-            <div className="accordion">
-              {material.map((item, i) => (
-                <div className="item" key={i}>
-                  {console.log(item)}
-                  {" "}
-                  {/*パフォーマンス向上のためらしい*/}
-                  {/* {console.log("インデックス番号:", i, "要素:", item)} */}
-                  <HeadingLine className="title" onClick={() => toggle(i)}>
-                    {/*料理名*/}
-                    <div className="materialname">{item.name}</div>
+        <div className="wrapper">
+          <div className="accordion">
+            {material.map((item, i) => (
+              <div className="item" key={i}>
+                {console.log(item)}
+                {" "}
+                {/*パフォーマンス向上のためらしい*/}
+                {/* {console.log("インデックス番号:", i, "要素:", item)} */}
+                <HeadingLine className="title" onClick={() => toggle(i)}>
+                  {/*料理名*/}
+                  <div className="materialname">{item.name}</div>
 
-                    {/* 表示、非表示を切り替えるボタン */}
-                    <span>
-                      {selected === i ? (
-                        <ArrowIcon direction="top" />
-                      ) : (
-                        <ArrowIcon direction="down" />
-                      )}
-                    </span>
-                  </HeadingLine>
-                  <div className={selected === i ? "content show" : "content"}>
-                    {item.materials.map((line) => (
-                      <SectionLine className="material" key={`${item.name}-${line.name}`}>
-                        <MaterialItem
-                          nameClassName="materialNameP"
-                          quantityClassName="quantityM"
-                          name={line.name}
-                          quantity={line.quantity}
-                          unit={line.unit}
-                        />
-                      </SectionLine>
-                    ))}
-                  </div>
+                  {/* 表示、非表示を切り替えるボタン */}
+                  <span>
+                    {selected === i ? (
+                      <ArrowIcon direction="top" />
+                    ) : (
+                      <ArrowIcon direction="down" />
+                    )}
+                  </span>
+                </HeadingLine>
+                <div className={selected === i ? "content show" : "content"}>
+                  {item.materials.map((line) => (
+                    <SectionLine className="material" key={`${item.name}-${line.name}`}>
+                      <MaterialItem
+                        nameClassName="materialNameP"
+                        quantityClassName="quantityM"
+                        name={line.name}
+                        quantity={line.quantity}
+                        unit={line.unit}
+                      />
+                    </SectionLine>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </main>
+        </div>
+      </main>
 
-        {/*フッター*/}
-        <FooterSection label="調理開始！" onClick={() => navigate("/cookProcess")} />
-      </div>
-    );
-
+      {/*フッター*/}
+      <FooterSection label="調理開始！" onClick={() => navigate("/cookProcess")} />
+    </div>
+  );
 }
