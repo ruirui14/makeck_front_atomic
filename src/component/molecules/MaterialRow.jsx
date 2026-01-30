@@ -1,4 +1,8 @@
 // 材料名+数量+単位(単体)
 function MaterialRow() {
-    return
+    return(
+        <></>
+    )
 }
+
+export default MaterialRow;

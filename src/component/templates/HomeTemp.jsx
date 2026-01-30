@@ -1,4 +1,8 @@
 //ホーム画面テンプレート
 function HomeTemp() {
-  return;
+  return(
+    <></>
+  );
 }
+
+export default HomeTemp;
