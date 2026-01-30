@@ -179,6 +179,7 @@ export default function MaterialList() {
             <div className="accordion">
               {material.map((item, i) => (
                 <div className="item" key={i}>
+                  {console.log(item)}
                   {" "}
                   {/*パフォーマンス向上のためらしい*/}
                   {/* {console.log("インデックス番号:", i, "要素:", item)} */}
@@ -196,8 +197,8 @@ export default function MaterialList() {
                     </span>
                   </HeadingLine>
                   <div className={selected === i ? "content show" : "content"}>
-                    {item.materials.map((line, index) => (
-                      <SectionLine className="material" key={index}>
+                    {item.materials.map((line) => (
+                      <SectionLine className="material" key={`${item.name}-${line.name}`}>
                         <MaterialItem
                           nameClassName="materialNameP"
                           quantityClassName="quantityM"
