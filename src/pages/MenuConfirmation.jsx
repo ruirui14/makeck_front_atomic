@@ -36,9 +36,6 @@ const _trivia = [
   "魚を調理するときには、塩をふってからしばらく置くと、食材のうまみが引き出されます。",
 ];
 
-// 調理時間
-const _ = 85;
-
 // 献立リスト
 const category = ["主食", "主菜", "副菜", "汁物"];
 
@@ -55,8 +52,8 @@ function MenuConfirmation() {
   const navigate = useNavigate();
 
   const [materials, setMaterials] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [_loading, setLoading] = useState(true);
+  const [_error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMaterials = async () => {
@@ -105,23 +102,6 @@ function MenuConfirmation() {
     };
   });
 
-  // selectId?.forEach((element) => {
-  //     console.log(`id: ${element} を検索`);
-
-  //     categorys?.forEach((category) => {
-  //         category?.forEach((item) => {
-  //             // 一致したら終了
-  //             if (element == item.id.normalize("NFC")) {
-  //                 console.log("発見: " + item.name);
-  //                 selectImages.push(item.image);
-  //                 selectMenus.push(item);
-  //                 console.log(item);
-  //                 return true;
-  //             }
-  //         });
-  //     });
-  // });
-
   // 画面が横になっている場合
   if (screen.orientation.angle != 0) {
     return (
@@ -157,20 +137,12 @@ function MenuConfirmation() {
       <HeaderSection title={title} />
 
       <main>
-        {/* <div id='cookingTime'>
-                    調理時間目安 : {cookingTime} 分
-                </div> */}
-        {/* <div id='cookingTime'><Marquee>
-                    {`豆知識：${trivia[Math.round(Math.random()*trivia.length)]}`}
-                </Marquee></div> */}
-
         <div id="menuListContainer">
           {selectMenus.map((menu, index) => {
-            console.log(menu.name);
             return (
-              <div className="menuWrapper" key={index}>
+              <div className="menuWrapper" key={menu.id}>
                 <RecipeCategoryName category={category[index]} />
-                <div className="border"></div>
+                <div className="border" />
                 <HeadingLine className="menu">
                   <RecipeImage image={menu.image} page={"MenuConfirmation"} />
                   <RecipeName menuName={menu.name} />
