@@ -38,7 +38,7 @@ const useCreateChart = (menuData) => {
 
           // メニュー4品
           menu : 
-            recipies.map((element, index) => {
+            recipies.map((element) => {
               var menuId = element.Uid;
               console.log(element.Name);
               return({
@@ -82,7 +82,7 @@ const useCreateChart = (menuData) => {
                       // 空き時間終了時点で格納
                       if (endTime) {
                         return({
-                          taskId : `${menuId}-${taskIndex}`,
+                          taskId : `${menuId}/${startTime}-${endTime}`,
                           taskName : "空き時間",
                           startTime : startTime,
                           endTime : endTime,
@@ -127,7 +127,7 @@ const useCreateChart = (menuData) => {
           console.log(`UID : ${element.uid}`)
           console.log(`最終状態 : ${element.lastState}`)
           console.log("手順")
-          element.task.map((t, tIndex) => {
+          element.task.map((t) => {
             if(t != undefined) {
               console.log(t.taskId)
               console.log(`\t${t.taskName} : ${t.type}\n\t所要時間 : ${t.useTime}分 (${t.startTime}分～${t.endTime}分)`)
@@ -137,7 +137,7 @@ const useCreateChart = (menuData) => {
         
         setChart(result) // データを状態に保存
       } catch (err) {
-        setError(err.message) // エラーを状態に保存
+        setChartError(err.message) // エラーを状態に保存
       }
     }
 
