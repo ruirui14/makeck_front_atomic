@@ -1,8 +1,30 @@
-# React + Vite
+### 概要
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React開発の3手法それぞれにおけるパフォーマンス・保守性などの比較
 
-Currently, two official plugins are available:
+- 設計指針に基づいてコンポーネント化した場合
+- 指針を設けずにコンポーネント化した場合
+- コンポーネント化をしていない場合(現状のコード)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 研究目的
+コンポーネント化が推奨されているものの、設計手法の選択が実際に与える影響を十分に把握できていないため、比較実験によりそれぞれのメリット・デメリットを理解する
+
+### 手法
+本研究では、UIを基準にした設計手法である、AtomicDesignを使用する
+
+### システム構成
+- フロントエンド　JavaScript,React
+- バックエンド Golang,ngnix
+- DB SQlite
+
+### 画像イメージ
+![説明](https://github.com/user-attachments/assets/be9f3b73-482e-44c0-81b0-ce1bda6a25e9)
+
+### 実行方法
+```bash
+git clone 
+```
+```bash
+npm install
+```
+```bash
